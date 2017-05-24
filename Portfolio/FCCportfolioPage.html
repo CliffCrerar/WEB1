@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="EN">
 <head>
 <title>Portfolio Page</title>
 	
@@ -9,18 +9,23 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
 		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<!--Custom CSS-->
-		<link href="C:\Users\clifford.crear\Documents\WEB1\Portfolio\FCCportfolioPage.css" rel="stylesheet" type="text/css">
+		<link href="https://github.com/CliffCrerar/WEB1/blob/master/Portfolio/FCCportfolioPage.css" rel="stylesheet" type="text/css">
+	<!--jQuery API-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!--Script file - Jqeury-->
-		<script src="C:\Users\clifford.crear\Documents\WEB1\Portfolio\JQ\FCCportfolioPage.js"></script>
+		<script src="https://github.com/CliffCrerar/WEB1/blob/master/Portfolio/JQ/FCCportfolioPage.js"></script>
 	
-	<!--End of External links-->
-	<style>
-	</style>
 </head>
 <body class="tb1">
+		<script>
+			$(document).ready(function() {
+				$("body").css("background-color", "red");
+				$("h2").addClass("text-primary")
+				}
+		</script>
 	
 	<!-- this is the naviation section of the page -->
-    <header style="background-color: #999" class="container-fluid">
+    <header style="background-color: #999" class="container-fluid" id="#target1">
 		<nav class="row">
 			<a class="col-xs-1" href ="#">About</a>
 			<a class="col-xs-1" href ="#">Portfolio</a>
@@ -30,7 +35,7 @@
 	
 	<!-- this is the page banner-->
     <div class="tb1">
-	    <h1>This a the banner</h1>
+	    <h1 style="font-family: lobster" class="text-primary">This a the banner</h1>
     </div>
 	
 	<!--This is the page content-->
