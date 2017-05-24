@@ -1,0 +1,29 @@
+	#PageBody{
+		font-family: lato;		
+	}
+	#Banner{
+		border-style: solid;
+		border-color: rgb(83,82,159);
+		background-color: rgb(83,82,159);
+		color: white;
+	}	
+	#ACLPIC{
+		height: 60px;
+		width: 75px;
+		border-radius: 5px;
+		float: left;
+	}
+	h1{
+		 font-size: 25px;
+	}
+	
+	/*Temporary CSS to show element borders*/
+	.tb1{
+		border-style: solid;
+	}
+	.tb2{
+		border-style: solid;
+		
+	}
+	
+	
