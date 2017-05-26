@@ -1,3 +1,6 @@
+	nav{
+		overflow:hidden;
+	}
 	
 	ul{
 		position: fixed-top;
@@ -5,20 +8,28 @@
 		margin:0;
 		padding:0;
 		Font-family: 'Baloo Bhaina';
-		background-color: #f1f1f1;
-		
+		overflow:hidden;
+	}
+	
+	li a {
+		display: block;
+		text-decoration: none;
+		color: #000;
+	}
+	
+	#pagecontent{
+		margin: auto;
+		width: 50%;
+		Position: relative;	
 	}
 	
 	.navlink{
 		text-align: center;
 		font-size: 20px;
-		border-style:solid		
-	}	
+	}
+		
 		
 	/*Temporary CSS to show element borders*/
-	.tb1{
-		border-style: solid;
-	}
 	.tb2{
 		border-style: solid;
 
