@@ -1,0 +1,32 @@
+h1{
+	color:white
+}
+
+.bd1{
+	border-style: solid;
+	border-width: 1px
+}
+
+nav{
+	font-size: 20px;
+	background-color: #445566
+}
+
+li:hover, a:hover{
+	background-color: black;
+	color: white
+}
+
+li, ul{
+	list-style-type: none;
+	width: 100%;
+	padding:0
+}
+
+.glyphformat{
+	font-size: 20px
+}
+
+span{
+	margin-left: 10px
+}
