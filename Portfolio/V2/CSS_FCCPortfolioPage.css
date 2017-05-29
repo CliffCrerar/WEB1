@@ -2,6 +2,8 @@ body{
 	background-image: 
 	url("file:///C:/Users/clifford.crear/Documents/WEB1/Test%20Images/texture-wallpapers-hd-21.jpg");
 	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
 h1{
@@ -13,6 +15,9 @@ h1{
 	border-width: 1px
 }
 
+#space1{
+	height: 130px;
+}
 nav{
 	font-size: 20px;	
 }
@@ -38,7 +43,8 @@ li, ul{
 }
 
 span{
-	margin-left: 10px
+	margin-left: 10px;
+	margin-right: 10px
 }
 
 .mheading{
