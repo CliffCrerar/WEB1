@@ -2,21 +2,13 @@ body{
 	background-image: 
 	url("file:///C:/Users/clifford.crear/Documents/WEB1/Test%20Images/texture-wallpapers-hd-21.jpg");
 	background-attachment: fixed;
+	background-size: cover;
 	background-repeat: no-repeat;
-	background-size: 100%;
+
 }
 
 h1{
 	color: white;
-}
-
-.bd1{
-	border-style: solid;
-	border-width: 1px
-}
-
-#space1{
-	height: 130px;
 }
 
 nav{
@@ -36,7 +28,8 @@ li:hover {
 li, ul{
 	list-style-type: none;
 	width: 100%;
-	padding:0
+	padding:0;
+	margin: auto;
 }
 
 .glyphformat{
@@ -53,18 +46,19 @@ span{
 	font-weight: bold;
 	color: white;
 	background-color: rgb(34,34,34);
-	padding: 5px;
-	border-radius: 10px
+	border-radius: 10px;
+	padding: 4px;
+	margin: 30px 0 20px 0;
 }
 
 #content{
-	margin-bottom: 0;
-	width: 70%;
+	margin-bottom: 0%;
+	max-width: 70%;
+	margin: auto;
 	font-family: quicksand;
-	padding: 0;
-
+	padding: 0%;
 	
-	padding-bottom: 2000px;
+	padding-bottom: 500px;
 }
 
 #nc{
@@ -75,6 +69,59 @@ span{
 	border-radius: 50px
 }
 
-.fa{
-	font-size: 50px;
+a{
+	padding:0px;
+	margin: 0px
+}
+
+p{
+	color: white;
+	Text-align: center;
+	margin: 0px;
+	height: 100%;
+	padding: 5px 0px 2px 0px;	
+}
+
+.thumbnail{
+	background-color: rgb(34,34,34);
+	border-color: rgb(34,34,34);
+	border-radius: 10px;
+	border-width: 3px;
+}
+
+form{
+	max-width: 100%;
+	margin: auto;
+	padding: 0px;
+	
+}
+
+h3{
+	margin:0px;
+	color: white
+}
+
+input{
+	width: 100%;
+}
+
+textarea{
+	width:100%
+}
+
+button{
+	width:50%;
+	margin: 0 25% 0 25%;
+
+}
+
+#mimg{	
+	width: 50%;
+	margin: 25% 0 25% 0
+}
+
+.well {
+	margin:0%;
+	padding:0%;
+	border:0%
 }

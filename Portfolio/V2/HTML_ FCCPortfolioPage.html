@@ -8,7 +8,6 @@
 	<!--Bootstrap Link css-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
 		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>		
 		
 	<!--External Links-->
 		<link href="C:\Users\clifford.crear\Documents\WEB1\Portfolio\V2\CSS_FCCPortfolioPage.css" rel="stylesheet" type="text/css">
@@ -20,10 +19,7 @@
 	<!--Google fonts-->
 		<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<!--Bootstrap Link js-->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>		
-		
-
-	
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
 	
 </head>
 <body>
@@ -49,12 +45,12 @@
 	<!--Page content-->
 	<div id="content" class="container-fluid">
 		
-		<div> <!--ABOUT-->
-			<h2 class="mheading" id="idabout">About</h2>
-			
+		<div id="idabout"> <!--ABOUT-->
+			<h2 class="mheading">About</h2>			
 			
 			<div id="nc" class="carousel slide" > <!--Own Carousel-->
 				<div class="carousel-inner">
+				
 					<div class="item active">
 						<img src="C:\Users\clifford.crear\Documents\WEB1\Test Images\night_panorama_nyc.jpg" alt="img1">
 					</div>
@@ -69,7 +65,9 @@
 				    <div class="item">
 					    <img src="C:\Users\clifford.crear\Documents\WEB1\Test Images\night_panorama_nyc.jpg" alt="img3">
 					</div>
+				
 				</div>
+
 				<a class="left carousel-control" href="#nc" data-slide="prev">
 					<span class="fa fa-chevron-circle-left" style="font-size:30px"></span>					
 				</a>
@@ -79,12 +77,106 @@
 			</div> <!--end about carousel-->
 			
 		</div> <!--end About-->
-		<div>
-			<h2 class="mheading" id="idport">Portfolio</h2>
-		</div> <!--end Portfolio-->
 		
-		<div>
-			<h2 class="mheading" id="idcontact">Contact</h2>
+		<div id="idport"> <!--Portfolio-->
+		
+			<h2 class="mheading">Portfolio</h2>
+			
+			<div class="row" id="pgal"> <!--Gallery row 1-->
+			
+				<div>
+					<a href="#" Title="Some website" class="thumbnail">
+						<img src="C:\Users\clifford.crear\Documents\WEB1\Portfolio\V2\Spacer.png" alt="Some website">
+						<p>This is a title</p>					
+					</a>
+				</div>
+				<div>
+					<a href="#" Title="Some website" class="thumbnail">
+						<img src="C:\Users\clifford.crear\Documents\WEB1\Portfolio\V2\Spacer.png" alt="Some website">
+						<p>This is a title</p>					
+					</a>						
+				</div>
+				<div>
+					<a href="#" Title="Some website" class="thumbnail">
+						<img src="C:\Users\clifford.crear\Documents\WEB1\Portfolio\V2\Spacer.png" alt="Some website">
+						<p>This is a title</p>					
+					</a>
+				</div>
+				<div>
+					<a href="#" Title="Some website" class="thumbnail">
+						<img src="C:\Users\clifford.crear\Documents\WEB1\Portfolio\V2\Spacer.png" alt="Some website">
+						<p>This is a title</p>					
+					</a>
+				</div>
+			</div> <!--end Gallery row 1-->
+			
+			<div class="row" id="pgal"> <!--Gallery row 2-->
+			
+				<div>
+					<a href="#" Title="Some website" class="thumbnail">
+						<img src="C:\Users\clifford.crear\Documents\WEB1\Portfolio\V2\Spacer.png" alt="Some website">
+						<p>This is a title</p>					
+					</a>
+				</div>
+				<div>
+					<a href="#" Title="Some website" class="thumbnail">
+						<img src="C:\Users\clifford.crear\Documents\WEB1\Portfolio\V2\Spacer.png" alt="Some website">
+						<p>This is a title</p>					
+					</a>						
+				</div>
+				<div>
+					<a href="#" Title="Some website" class="thumbnail">
+						<img src="C:\Users\clifford.crear\Documents\WEB1\Portfolio\V2\Spacer.png" alt="Some website">
+						<p>This is a title</p>					
+					</a>
+				</div>
+				<div>
+					<a href="#" Title="Some website" class="thumbnail">
+						<img src="C:\Users\clifford.crear\Documents\WEB1\Portfolio\V2\Spacer.png" alt="Some website">
+						<p>This is a title</p>					
+					</a>
+				</div>			
+			</div> <!--end Gallery row 2-->
+			
+		</div> <!--end Portfolio-->
+	
+		<div id="idcontact">
+			<h2 class="mheading">Contact</h2>
+			<div class="row" style="margin: auto ; background: rgba(34,34,34,0.5);">
+				<form class="col-sm-9 col-xs-12">
+					<h3>This is a form</h3>
+					<div class="row form-group" id="Name">						
+						<div class="col-sm-4 col-xs-12">
+							<h3>*Name:</h3>
+						</div>
+						<div class="col-sm-8 col-xs-12">
+							<input type="text"></label>							
+						</div>
+					</div>
+					<div class="row form-group" id="EmailAddress">						
+						<div class="col-sm-4 col-xs-12">
+							<h3>*Email Address:</h3>
+						</div>
+						<div class="col-sm-8 col-xs-12">
+							<input type="text"></label>							
+						</div>
+					</div>
+					<div class="row form-group" id="Comment">						
+						<div class="col-sm-4 col-xs-12">
+							<h3>Additional Feedback:</h3>
+						</div>
+						<div class="col-sm-8 col-xs-12">
+							<textarea type="text" rows="5"></textarea>							
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn">Submit</button>
+					</div>
+				</form>
+				<div class="col-sm-3 col-xs-0">
+					<img id="mimg" src="C:\Users\clifford.crear\Documents\WEB1\Portfolio\V2\Spacer.png" alt="Cliff_Crerar">
+				</div>
+			</div>
 		</div> <!--end contact-->
 			
 	</div>	
