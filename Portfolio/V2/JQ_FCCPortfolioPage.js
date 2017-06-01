@@ -7,4 +7,6 @@ $(document).ready(function(){
 	$("img").css("img-responsive");	
 	$(".item").addClass("image-container");
 	$(".thumbnail").parent().addClass("col-sm-3","col-xs-12");
+	$("input").prop("placeholder","Type here");
+	$("textarea").prop("placeholder","Please leave a comment")
 })

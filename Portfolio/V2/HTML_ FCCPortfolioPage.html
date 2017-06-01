@@ -143,22 +143,22 @@
 		<div id="idcontact">
 			<h2 class="mheading">Contact</h2>
 			<div class="row" style="margin: auto ; background: rgba(34,34,34,0.5);">
-				<form class="col-sm-9 col-xs-12">
+				<form class="col-sm-9 col-xs-12" id="ctForm1"> <!--form-->
 					<h3>This is a form</h3>
 					<div class="row form-group" id="Name">						
 						<div class="col-sm-4 col-xs-12">
 							<h3>*Name:</h3>
 						</div>
 						<div class="col-sm-8 col-xs-12">
-							<input type="text"></label>							
+							<input type="text" form="ctForm1" name="edtName" class="form-control"></label><!--edt box-->							
 						</div>
 					</div>
 					<div class="row form-group" id="EmailAddress">						
 						<div class="col-sm-4 col-xs-12">
 							<h3>*Email Address:</h3>
 						</div>
-						<div class="col-sm-8 col-xs-12">
-							<input type="text"></label>							
+						<div class="col-sm-8 col-xs-12" form="ctForm1">
+							<input type="text" form="ctForm1" name="edtEmailAddr" class="form-control"></label>	<!--edt box-->							
 						</div>
 					</div>
 					<div class="row form-group" id="Comment">						
@@ -166,13 +166,17 @@
 							<h3>Additional Feedback:</h3>
 						</div>
 						<div class="col-sm-8 col-xs-12">
-							<textarea type="text" rows="5"></textarea>							
+							<textarea type="text" rows="5"  class="form-control"></textarea><!--edt box-->							
 						</div>
 					</div>
-					<div class="form-group">
-						<button type="submit" class="btn">Submit</button>
+					<div class="row">
+						<div class="form-group col-sm-4" form="ctForm1">	
+						</div>
+						<div class="form-group col-sm-8" form="ctForm1">
+							<button type="submit" class="btn">Submit</button> <!--submit button box-->	
+						</div>
 					</div>
-				</form>
+				</form> <!--end form-->
 				<div class="col-sm-3 col-xs-0">
 					<img id="mimg" src="C:\Users\clifford.crear\Documents\WEB1\Portfolio\V2\Spacer.png" alt="Cliff_Crerar">
 				</div>
