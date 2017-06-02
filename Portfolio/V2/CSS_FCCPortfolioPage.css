@@ -4,20 +4,16 @@ body{
 	background-attachment: fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
-
 }
 
-h1{
-	color: white;
-}
-
-nav{
-	font-size: 20px;	
+nav{	
+	font-size: calc(12px + 1vw);	
 }
 
 #phdng{
+	color: white;
 	font-family: quicksand;
-	font-size: 50px
+	font-size: calc(10px + 4vw)
 }
 
 li:hover {
@@ -25,7 +21,7 @@ li:hover {
 	border-radius: 50px
 }
 
-li, ul{
+ul{
 	list-style-type: none;
 	width: 100%;
 	padding:0;
@@ -33,7 +29,7 @@ li, ul{
 }
 
 .glyphformat{
-	font-size: 20px
+	margin: auto;
 }
 
 span{
@@ -42,13 +38,13 @@ span{
 }
 
 .mheading{
-	font-size: 40px;
+	font-size: calc(10px + 2vw);
+	padding: .2em;
 	font-weight: bold;
 	color: white;
 	background-color: rgb(34,34,34);
 	border-radius: 10px;
-	padding: 4px;
-	margin: 30px 0 20px 0;
+	margin: 150px 0 40px 0;
 }
 
 #content{
@@ -57,8 +53,7 @@ span{
 	margin: auto;
 	font-family: quicksand;
 	padding: 0%;
-	
-	padding-bottom: 500px;
+
 }
 
 #nc{
@@ -69,9 +64,13 @@ span{
 	border-radius: 50px
 }
 
-a{
-	padding:0px;
-	margin: 0px
+.carousel-caption{
+	background-color: rgba(0,0,0,0.6);
+
+}
+
+.imgcaption{
+	font-size: calc(8px + 1.5vw);
 }
 
 p{
@@ -93,7 +92,22 @@ form{
 	max-width: 100%;
 	margin: auto;
 	padding: 0px;
-	
+}
+
+#frmHeading{
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+	border-radius: 20px
+}
+
+#idcontact{
+	margin-bottom: 20px;
+}
+
+#thankyou{
+	font-size: calc(15px + 2vw);
+	padding: 5px
 }
 
 h3{
@@ -112,21 +126,18 @@ textarea{
 button{
 	width:50%;
 	margin: 0 25% 0 25%;
-
 }
 
-input{
-	Height: 30px;
-	value: text;
+#mimg{
+	max-width: 200px
 }
 
-#mimg{	
-	width: 50%;
-	margin: 25% 0 25% 0
+h4{
+	color: white;
+	font-size: calc(15px + 1vw)
 }
 
-.well {
-	margin:0%;
-	padding:0%;
-	border:0%
+h5{
+	color: white;
+	font-size: 20px
 }
