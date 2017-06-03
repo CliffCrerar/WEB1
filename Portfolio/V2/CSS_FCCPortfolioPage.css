@@ -129,7 +129,9 @@ button{
 }
 
 #mimg{
-	max-width: 200px
+	max-width: 200px;
+	display: flex;
+	margin: auto;
 }
 
 h4{
