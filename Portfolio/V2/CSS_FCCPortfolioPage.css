@@ -38,13 +38,13 @@ span{
 }
 
 .mheading{
-	font-size: calc(10px + 2vw);
+	font-size: calc(15px + 2vw);
 	padding: .2em;
 	font-weight: bold;
 	color: white;
 	background-color: rgb(34,34,34);
 	border-radius: 10px;
-	margin: 150px 0 40px 0;
+	margin: calc(25px + 3em) 0 40px 0;
 }
 
 #content{
