@@ -1,70 +1,208 @@
 //JS for Quote generator
 var rNump = -1;
+var usedIndex = [];
 var QuoteArray = [
 		{
-			quote: "Loosers try their best, winner go home and fuck the prom queen.", 
-			author: "John Mason."
+			quote: "Loosers try their best, winners go home and fuck the prom queen.", 
+			author: "John Mason, played by Sean Connery"
 		},
 		{
 			quote: "I hated every minute of training, but I said, 'Don't quit. Suffer now and live the rest of your life as a champion.", 
 			author: "Muhammad Ali"
 		},
 		{
-			quote: "Insert Qoute2", 
-			author: "Inser Author2"
+			quote: "They watch, then they hate, then they copy.",
+			author: "Millionaire Sayings"
 		},
 		{
-			quote: "Insert Qoute3", 
-			author: "Inser Author3"
+			quote: "Education is the most powerful, weapon you can use to change the world.", 
+			author: "Nelson Mandela"
 		},
 		{
-			quote: "Insert Qoute4", 
-			author: "Inser Author4"
+			quote: "You either die a hero, or live long enough to see yourself become the villian.", 
+			author: "Harvey Dent(tow faced Harvey), played by Aaron Eckhart"
 		},
 		{
-			quote: "Insert Qoute5", 
-			author: "Inser Author5"
+			quote: "What does not kill you makes you stranger.", 
+			author: "The Joker, played by Heath Ledger"
 		},
 		{
-			quote: "Insert Qoute6", 
-			author: "Inser Author6"
+			quote: "The man who passes the sentence, should swing the sword.", 
+			author: "Eddard Stark, played by Sean Bean"
 		},
 		{
-			quote: "Insert Qoute7", 
-			author: "Inser Author7"
+			quote: "The things I do for love.", 
+			author: "Jaime Lannister, played by Nikolaj Coster-Waldau"
 		},
 		{
-			quote: "Insert Qoute8", 
-			author: "Inser Author8"
+			quote: "Chaos isn't a pit. Chaos is a ladder. Many who try to climb it fail and never get to try again. The fall breaks them. And some, are given a chance to climb. They refuse, they cling to the realm, or the gods, or love. Illusions. Only the ladder is real. The climb is all there is.", 
+			author: "Peter Baelish, played by Aiden Gillen"
 		},
 		{
-			quote: "Insert Qoute9", 
-			author: "Inser Author9"
+			quote: "So many men, they risk so little, then they die. I am willing to risk everything to get what I want.", 
+			author: "Peter Baelish, played by Aiden Gillen"
 		},
 		{
-			quote: "Insert Qoute10", 
-			author: "Inser Author10"
+			quote: "Know your strengths, use them wisely and one man can be worth ten thousand.", 
+			author: "Peter Baelish, played by Aiden Gillen"
 		},
 		{
-			quote: "Insert Qoute11", 
-			author: "Inser Author11"
+			quote: "We buy things we don't need, with money we don't have to impress people we don't like.", 
+			author: "Tyler Durden, played by Brad Pitt \\ Edward Norton"
 		},
 		{
-			quote: "Insert Qoute12", 
-			author: "Inser Author12"
+			quote: "Its only after we have lost everything that we are free to do anything.", 
+			author: "Tyler Durden, played by Brad Pitt \\ Edward Norton"
 		},
 		{
-			quote: "Insert Qoute13", 
-			author: "Inser Author13"
+			quote: "A man that doesn't spend time with his family, can never be a real man.", 
+			author: "Vito Corleone, played by Marlon Brando"
 		},
 		{
-			quote: "Insert Qoute14", 
-			author: "Inser Author14"
+			quote: "Train yourself to let go of everything you fear to lose.", 
+			author: "Yoda, played by Frank Oz \\ Tom Kane"
 		},
 		{
-			quote: "Insert Qoute15", 
-			author: "Inser Author15"
+			quote: "Death is a natural part of life. Rejoice for those around you who transform into the Force. Mourn them do not. Miss them do not. Attachment leads to jealously. The shadow of greed, that is.", 
+			author: "Yoda, played by Frank Oz \\ Tom Kane"
 		},
+		{
+			quote: "We don't play golf because we are good at it, we play golf because its awesome.", 
+			author: "Cliff Crerar"
+		}/*,
+		{
+			quote: "Qoute 17", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 18", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 19", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 20", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 21", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 22", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 23", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 24", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 25", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 26", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 27", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 28", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 29", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 30", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 31", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 32", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 33", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 34", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 35", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 36", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 37", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 38", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 39", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 40", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 41", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 42", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 43", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 44", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 45", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 46", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 47", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 48", 
+			author: "Author"
+		},
+		{
+			quote: "Qoute 49", 
+			author: "Author"
+		}*/
+		
 	]
 		
 function randomNumber() {
@@ -74,7 +212,7 @@ function randomNumber() {
 		while(arrNum == rNump){
 			var i = 0;
 			i++;
-			console.log("i: "+i);
+			console.log("i1: "+i);
 			rNum = Math.random();
 			arrNum = Math.floor(rNum*(QuoteArray.length));	
 		}
@@ -84,9 +222,34 @@ function randomNumber() {
 }
 		
 function ChangeQuote(){
-	var num = randomNumber();
-	console.log("RANDOM FUNCTION :"+num);
-	document.getElementById("randQuote").innerHTML = QuoteArray[num].quote;
-	document.getElementById("randAuth").innerHTML = QuoteArray[num].author;
-	console.log("Generate Quote Button Clicked.");
+	console.log('Array length: '+QuoteArray.length)
+	console.log('Array length: '+usedIndex.length)
+	
+	var num = randomNumber(); console.log("INITIAL NUMBER: "+num);
+	console.log(usedIndex.indexOf(num));
+	
+	if (QuoteArray.length == usedIndex.length) {
+		document.getElementById("randQuote").innerHTML = "You have seen all my qoutes, thanks for playing";
+		document.getElementById("randAuth").innerHTML = '';
+	} else { 
+		if (usedIndex.indexOf(num) != -1) {
+			while (usedIndex.indexOf(num) != -1) {
+				var i = 0;
+				i++;
+				console.log("i2: "+i);
+				num = randomNumber();
+			}
+		}
+		console.log(usedIndex.indexOf(num));
+		console.log("Number pushed to usedIndex :"+num);
+		usedIndex.push(num);	
+		document.getElementById("randQuote").innerHTML = QuoteArray[num].quote;
+		document.getElementById("randAuth").innerHTML = QuoteArray[num].author;
+		console.log("Generate Quote Button Clicked.");
+	}
+}
+
+function findIndex(){
+	console.log(usedIndex.sort(function(a,b){return a-b;}));
+
 }
