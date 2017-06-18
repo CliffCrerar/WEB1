@@ -2,14 +2,25 @@ body {
 	background-color: #ff5555;
 }
 
+h1 {
+	font-size: 60px;
+	margin-bottom: 5%
+}
+
+h2 {
+	margin-bottom: 5%;
+}
+
+span {
+	margin: 0px 10px 0px 10px;
+}
+
 #mainDiv{
-	border-style: solid;
-	border-width: 1px;
+
 	width: 50%;
 	margin: 100px auto auto auto;
 }
 
-button {
-	margin: auto;
-	--background-color: #ff5555; 
+h4 {
+	font-size: 60px;
 }
