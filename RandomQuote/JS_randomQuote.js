@@ -35,7 +35,7 @@ var QuoteArray = [
 			author: "Jaime Lannister, played by Nikolaj Coster-Waldau"
 		},
 		{
-			quote: "Chaos isn't a pit. Chaos is a ladder. Many who try to climb it fail and never get to try again. The fall breaks them. And some, are given a chance to climb. They refuse, they cling to the realm, or the gods, or love. Illusions. Only the ladder is real. The climb is all there is.", 
+			quote: "Chaos isn't a pit. Chaos is a ladder. Many who try to climb it fail and never get to try again.", 
 			author: "Peter Baelish, played by Aiden Gillen"
 		},
 		{
@@ -63,7 +63,7 @@ var QuoteArray = [
 			author: "Yoda, played by Frank Oz \\ Tom Kane"
 		},
 		{
-			quote: "Death is a natural part of life. Rejoice for those around you who transform into the Force. Mourn them do not. Miss them do not. Attachment leads to jealously. The shadow of greed, that is.", 
+			quote: "Death is a natural part of life. Rejoice for those around you who transform into the Force.", 
 			author: "Yoda, played by Frank Oz \\ Tom Kane"
 		},
 		{
@@ -71,7 +71,7 @@ var QuoteArray = [
 			author: "Cliff Crerar"
 		},
 		{
-			quote: "The only rules that really matter are these; what a man can do and what a man can't do.", 
+			quote: "The only rules that really matter are these\; what a man can do and what a man can't do.", 
 			author: "Captain Jack Sparrow, played by Johnny Depp"
 		}/*,
 		{
@@ -220,6 +220,33 @@ function randomNumber() {
 	rNump = arrNum;	
 	return arrNum;
 }
+
+function prepTweet(quote, author) {
+	
+	var tQuote = quote;
+	var tAuthor = author;
+	var spaceSearch = tQuote.search(" ");
+	var twitterApi = "https://twitter.com/intent/tweet?text="
+	
+	console.log(spaceSearch);
+
+	while(spaceSearch > 0) {
+		tQuote = tQuote.replace(" ","+");
+		spaceSearch = tQuote.search(" ");
+		console.log(spaceSearch);
+	}
+	
+	spaceSearch = tAuthor.search(" ");
+	console.log(spaceSearch);
+	var it = 0
+	while(spaceSearch > 0) {
+		tAuthor = tAuthor.replace(" ","+");
+		spaceSearch = tAuthor.search(" ");
+		console.log(spaceSearch);
+	}	
+	tweetHref =twitterApi+"'"+ tQuote+"'+--"+tAuthor
+	return tweetHref;	
+}
 		
 function ChangeQuote(){
 	console.log('Array length: '+QuoteArray.length)
@@ -246,10 +273,21 @@ function ChangeQuote(){
 		document.getElementById("randQuote").innerHTML = QuoteArray[num].quote;
 		document.getElementById("randAuth").innerHTML = QuoteArray[num].author;
 		console.log("Generate Quote Button Clicked.");
+		console.log("Prepare Tweet");
+		console.log(prepTweet(QuoteArray[num].quote,QuoteArray[num].author));
+		document.getElementById("tweet1").setAttribute("href",prepTweet(QuoteArray[num].quote,QuoteArray[num].author));
 	}
 }
 
-function findIndex(){
-	console.log(usedIndex.sort(function(a,b){return a-b;}));
 
-}
+
+/*
+var q = "This is a new qoute by a function 1 2 3"
+var a = "Thisi is a author"
+
+function addQuote(q,a) {
+	QuoteArray.push({
+		qoute: q,
+		quote: a
+	})
+}*/
