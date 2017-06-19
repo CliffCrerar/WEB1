@@ -69,11 +69,11 @@ var QuoteArray = [
 		{
 			quote: "We don't play golf because we are good at it, we play golf because its awesome.", 
 			author: "Cliff Crerar"
-		}/*,
-		{
-			quote: "Qoute 17", 
-			author: "Author"
 		},
+		{
+			quote: "The only rules that really matter are these; what a man can do and what a man can't do.", 
+			author: "Captain Jack Sparrow, played by Johnny Depp"
+		}/*,
 		{
 			quote: "Qoute 18", 
 			author: "Author"
