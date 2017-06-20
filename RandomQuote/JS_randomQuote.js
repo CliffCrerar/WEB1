@@ -7,7 +7,7 @@ var QuoteArray = [
 			author: "John Mason, played by Sean Connery"
 		},
 		{
-			quote: "I hated every minute of training, but I said, 'Don't quit. Suffer now and live the rest of your life as a champion.", 
+			quote: "I hated every minute of training, but I said, Don't quit. Suffer now and live the rest of your life as a champion.", 
 			author: "Muhammad Ali"
 		},
 		{
@@ -19,15 +19,15 @@ var QuoteArray = [
 			author: "Nelson Mandela"
 		},
 		{
-			quote: "You either die a hero, or live long enough to see yourself become the villian.", 
-			author: "Harvey Dent(tow faced Harvey), played by Aaron Eckhart"
+			quote: "You either die a hero or live long enough to see yourself become the villain.", 
+			author: "Harvey Dent aka. two faced Harvey, played by Aaron Eckhart"
 		},
 		{
 			quote: "What does not kill you makes you stranger.", 
 			author: "The Joker, played by Heath Ledger"
 		},
 		{
-			quote: "The man who passes the sentence, should swing the sword.", 
+			quote: "The man who passes the sentence should swing the sword.", 
 			author: "Eddard Stark, played by Sean Bean"
 		},
 		{
@@ -51,7 +51,7 @@ var QuoteArray = [
 			author: "Tyler Durden, played by Brad Pitt \\ Edward Norton"
 		},
 		{
-			quote: "Its only after we have lost everything that we are free to do anything.", 
+			quote: "It's only after we have lost everything that we are free to do anything.", 
 			author: "Tyler Durden, played by Brad Pitt \\ Edward Norton"
 		},
 		{
@@ -71,148 +71,66 @@ var QuoteArray = [
 			author: "Cliff Crerar"
 		},
 		{
-			quote: "The only rules that really matter are these\; what a man can do and what a man can't do.", 
+			quote: "The only rules that really matter are these, what a man can do and what a man can't do.", 
 			author: "Captain Jack Sparrow, played by Johnny Depp"
-		}/*,
-		{
-			quote: "Qoute 18", 
-			author: "Author"
 		},
 		{
-			quote: "Qoute 19", 
-			author: "Author"
+			quote: "A quotation at the right moment is like bread in a famine.", 
+			author: "Talmud"
 		},
 		{
-			quote: "Qoute 20", 
-			author: "Author"
+			quote: "A ship is safe in harbor, but that's not what ships are for.", 
+			author: "William Shedd"
 		},
 		{
-			quote: "Qoute 21", 
-			author: "Author"
+			quote: "Experience tells you what to do, confidence allows you to do it.", 
+			author: "Stan Smith"
 		},
 		{
-			quote: "Qoute 22", 
-			author: "Author"
+			quote: "I failed my way to success.", 
+			author: "Thomas Edison"
 		},
 		{
-			quote: "Qoute 23", 
-			author: "Author"
+			quote: "Don't fear failure.  Not failure, but low aim, is the crime. In great attempts it is glorious even to fail.", 
+			author: "Bruce Lee"
 		},
 		{
-			quote: "Qoute 24", 
-			author: "Author"
+			quote: "A goal is not always meant to be reached, it often serves simply as something to aim at.", 
+			author: "Bruce Lee"
 		},
 		{
-			quote: "Qoute 25", 
-			author: "Author"
+			quote: "A quick temper will make a fool of you soon enough.", 
+			author: "Bruce Lee"
 		},
 		{
-			quote: "Qoute 26", 
-			author: "Author"
+			quote: "Knowing is not enough, you must apply, willing is not enough, you must do.", 
+			author: "Bruce Lee"
 		},
 		{
-			quote: "Qoute 27", 
-			author: "Author"
+			quote: "Be the change you want to see in the world.", 
+			author: "Mahatma Ghandi"
 		},
 		{
-			quote: "Qoute 28", 
-			author: "Author"
+			quote: "To improve is to change. To be perfect is to change often.", 
+			author: "Winston Churchill"
 		},
 		{
-			quote: "Qoute 29", 
-			author: "Author"
+			quote: "Don't feel stupid if you don't like what everyone else pretends to love.", 
+			author: "Emma Watson"
 		},
 		{
-			quote: "Qoute 30", 
-			author: "Author"
+			quote: "In the practice of tolerance, ones enemies are the best teachers.", 
+			author: "The Dalai Lama"
 		},
-		{
-			quote: "Qoute 31", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 32", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 33", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 34", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 35", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 36", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 37", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 38", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 39", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 40", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 41", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 42", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 43", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 44", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 45", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 46", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 47", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 48", 
-			author: "Author"
-		},
-		{
-			quote: "Qoute 49", 
-			author: "Author"
-		}*/
 		
 	]
 		
 function randomNumber() {
 	var rNum = Math.random()	
 	var arrNum = Math.floor(rNum*(QuoteArray.length))
+	
 	if(arrNum == rNump) {		
 		while(arrNum == rNump){
-			var i = 0;
-			i++;
-			console.log("i1: "+i);
 			rNum = Math.random();
 			arrNum = Math.floor(rNum*(QuoteArray.length));	
 		}
@@ -222,38 +140,31 @@ function randomNumber() {
 }
 
 function prepTweet(quote, author) {
-	
 	var tQuote = quote;
-	var tAuthor = author;
-	var spaceSearch = tQuote.search(" ");
 	var twitterApi = "https://twitter.com/intent/tweet?text="
-	
-	console.log(spaceSearch);
+	var spaceSearch = tQuote.search(" ");
 
+	if(author.search(",") != -1) {
+		var tAuthor = author.slice(0,author.search(","));
+	}
+	else{
+		var tAuthor = author;
+	};	
 	while(spaceSearch > 0) {
 		tQuote = tQuote.replace(" ","+");
 		spaceSearch = tQuote.search(" ");
-		console.log(spaceSearch);
-	}
-	
+	}		
 	spaceSearch = tAuthor.search(" ");
-	console.log(spaceSearch);
-	var it = 0
 	while(spaceSearch > 0) {
 		tAuthor = tAuthor.replace(" ","+");
 		spaceSearch = tAuthor.search(" ");
-		console.log(spaceSearch);
 	}	
-	tweetHref =twitterApi+"'"+ tQuote+"'+--"+tAuthor
+	tweetHref =twitterApi+"'"+ tQuote+"'+-"+tAuthor
 	return tweetHref;	
 }
-		
+
 function ChangeQuote(){
-	console.log('Array length: '+QuoteArray.length)
-	console.log('Array length: '+usedIndex.length)
-	
-	var num = randomNumber(); console.log("INITIAL NUMBER: "+num);
-	console.log(usedIndex.indexOf(num));
+	var num = randomNumber();
 	
 	if (QuoteArray.length == usedIndex.length) {
 		document.getElementById("randQuote").innerHTML = "You have seen all my qoutes, thanks for playing";
@@ -261,33 +172,12 @@ function ChangeQuote(){
 	} else { 
 		if (usedIndex.indexOf(num) != -1) {
 			while (usedIndex.indexOf(num) != -1) {
-				var i = 0;
-				i++;
-				console.log("i2: "+i);
 				num = randomNumber();
 			}
 		}
-		console.log(usedIndex.indexOf(num));
-		console.log("Number pushed to usedIndex :"+num);
-		usedIndex.push(num);	
-		document.getElementById("randQuote").innerHTML = QuoteArray[num].quote;
-		document.getElementById("randAuth").innerHTML = QuoteArray[num].author;
-		console.log("Generate Quote Button Clicked.");
-		console.log("Prepare Tweet");
-		console.log(prepTweet(QuoteArray[num].quote,QuoteArray[num].author));
-		document.getElementById("tweet1").setAttribute("href",prepTweet(QuoteArray[num].quote,QuoteArray[num].author));
+	usedIndex.push(num);	
+	document.getElementById("randQuote").innerHTML = QuoteArray[num].quote;
+	document.getElementById("randAuth").innerHTML = QuoteArray[num].author;
+	document.getElementById("tweet1").setAttribute("href",prepTweet(QuoteArray[num].quote,QuoteArray[num].author));
 	}
 }
-
-
-
-/*
-var q = "This is a new qoute by a function 1 2 3"
-var a = "Thisi is a author"
-
-function addQuote(q,a) {
-	QuoteArray.push({
-		qoute: q,
-		quote: a
-	})
-}*/
