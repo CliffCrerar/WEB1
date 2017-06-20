@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang=en>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +7,7 @@
 		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
 		crossorigin="anonymous">
 	<!--Font Awesome-->
-		<link rel="stylesheet" href="C:\Users\clifford.crear\Documents\WEB1\FontAwesome\font-awesome-4.7.0\css\font-awesome.min.css">
+		<script src="https://use.fontawesome.com/117c6a36cf.js"></script>
 
 	<!--Custom-->
 		<link rel="stylesheet" href="C:\Users\clifford.crear\Documents\WEB1\RandomQuote\CSS_randomQuote.css">
@@ -15,39 +15,36 @@
 
 </head>
 <body = class="">	
-<div id="mainDiv">
+<div id="mainDiv" class="container-fluid">
 	<div  class="well">
 		<h1 class="text-center">My favourite quotes machine<span class="fa fa-cogs"></span></h1>
 
 		<div style="padding: 0px 0px 5% 0px">
-			<button onclick="ChangeQuote()" class="btn btn-success btn-lg btn-block" title="This button will generate a new quote!">
-				<strong style="font-size: 30px">Generate New Quote</strong>
+			<button onclick="ChangeQuote()" class="btn btn-success btn-block" title="This button will generate a new quote!">
+				<strong id = "quoteButton">Generate Quote</strong>
 			</button>
-		</div>
-		<blockquote>
-			<h3 id="randQuote"></h3></h3>
-			<footer id = "randAuth"></footer>
-		</blockquote>
-		<div>
-			<a id="tweet1" class="twitter-share-button" href="https://twitter.com/intent/tweet" target="_blank">
-			<button href="#" class="btn btn-primary" style="width: 20%; margin: 0 40% 0 40%; ">
-				<h4 data-toggle="tooltip" title="Post to twitter"><span class="fa fa-twitter"></span></h4>
-				<!--TWITTER-->
-				
-				<!--/TWITTER-->
-			</button>
-			</a>
+		</div>	
+		<div id="quoteSection" class="">
+			<blockquote>
+				<h3 id="randQuote"></h3></h3>
+				<footer id = "randAuth"></footer>
+			</blockquote>	
 		</div>
 		
-		<!--TempCode-->
-			<button class="btn btn-success hidden" onclick="addQuote(q,a)">Test</button>
-		<!--TempCode-->
-		
-		<!--TWITTER-->
-			<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Hello%20world"></a>
-		<!--/TWITTER-->
-	</div>
+		<div id="tweetBtn">				
+			<button class="btn btn-primary"> 
+				<a id="tweet1" href="https://twitter.com/intent/tweet" target="_blank">
+					<h4 data-toggle="tooltip" title="Post to twitter">
+						<span class="fa fa-twitter"></span>
+					</h4>
+				</a>
+			</button>
+		</div>		
+	</div style="padding: auto">
 	<h2 class="text-right"><i><small>a page by</small> Cliffenator</i></h2>
+	<a style="float: right;" class="twitter-follow-button" href="https://twitter.com/Cliffenator" target="_blank">
+		<button class="btn">Follow Me<span class="fa fa-twitter"></span></button>
+	</a>
 </div>
 
 

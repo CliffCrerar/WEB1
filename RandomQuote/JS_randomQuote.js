@@ -164,6 +164,7 @@ function prepTweet(quote, author) {
 }
 
 function ChangeQuote(){
+	$("#quoteSection").removeClass("hidden");
 	var num = randomNumber();
 	
 	if (QuoteArray.length == usedIndex.length) {
