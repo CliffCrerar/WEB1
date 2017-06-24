@@ -7,13 +7,10 @@ $(document).ready(function(){
 		['AMOUNT_REPORT_CURRENCY','%V_AMOUNT %'],
 		['REPORT_CURRENCY_INDICATOR','%V_AMT_CUR_IND %'],
 	]
-	
-	
+		
 	//Paste excel above here
 	
-	var path="file:///C:/Users/clifford.crear/Desktop/GL_04_Data_Prep_and_Map_SAP.txt"
-	
-	
+	var path="file:///C:/Users/clifford.crear/Desktop/GL_04_Data_Prep_and_Map_SAP.txt"	
 	
 	$("button").click(function(){
 		console.log(repArr[1][0]);
