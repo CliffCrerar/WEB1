@@ -1,0 +1,49 @@
+<!DOCTYPE>
+<html>
+<head>
+<!--Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--jQuery-->
+	<script src="C:\Users\clifford.crear\Documents\WEB1\jQuery\jquery-3.2.1.min.js"></script>
+<!--Custom
+	<script src="C:\Users\clifford.crear\Documents\WEB1\KeyEncryption\KeyEncryption.js"></script>-->
+	<script src="C:\Users\clifford.crear\Documents\WEB1\KeyEncryption\JS_KeyEncryption.js"></script>
+</head>
+<body style="background-color: rgb(150, 110, 150)">
+	<div class="container-fluid">
+		<form id="keyEnc" class="container well" style="float:center; margin:10% auto auto auto; max-width: 500px">
+			
+			<h1 class="text-center" style="font-size: calc(20px + 1vw)">Encryption Device</h1>
+			
+			<div class="btn-group btn-group-justified" style="margin:5% auto 5% auto">
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-info" autofocus>Encrypt Key</button>
+				</div>
+				<div class="btn-group" role="group">
+					<button type="button" class="btn btn-danger">Decrypt Key</button>				
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label>Key to encrypt</label>
+				<input type="text" class="form-control" placeholder="paste or type key here">
+			</div>
+			
+			<button id="encrypt" type="button" class="btn btn-warning btn-block" style="margin: 5% 0 5% 0">Encrypt</button>
+			
+			<div class="form-group">
+				<label>Encrypted Key</label>
+				<div class="input-group">
+					<input id="out" type="text" class="form-control" disabled>
+					<span class="input-group-btn">
+						<button class="btn">Copy</button>
+					</span>
+				</div>
+			</div>
+			
+			<button class="btn btn-block"style="margin: 7% 0 5% 0">Reset</button>
+			
+		</form>
+	</div>
+</body>
+</html>
