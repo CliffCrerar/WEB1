@@ -17,26 +17,26 @@
 			
 			<div class="btn-group btn-group-justified" style="margin:5% auto 5% auto">
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-info" autofocus>Encrypt Key</button>
+					<button id="encrypt" type="button" class="btn btn-info" autofocus>Encrypt Key</button>
 				</div>
 				<div class="btn-group" role="group">
-					<button type="button" class="btn btn-danger">Decrypt Key</button>				
+					<button id="decrypt" type="button" class="btn btn-danger">Decrypt Key</button>				
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label>Key to encrypt</label>
-				<input type="text" class="form-control" placeholder="paste or type key here">
+				<input id="keyInput" type="text" class="form-control" placeholder="paste or type key here">
 			</div>
 			
-			<button id="encrypt" type="button" class="btn btn-warning btn-block" style="margin: 5% 0 5% 0">Encrypt</button>
+			<button id="encryption" type="button" class="btn btn-warning btn-block" style="margin: 5% 0 5% 0">Encrypt</button>
 			
 			<div class="form-group">
-				<label>Encrypted Key</label>
+				<label>Encrypted key</label>
 				<div class="input-group">
-					<input id="out" type="text" class="form-control" disabled>
+					<input id="keyOut" type="text" class="form-control" disabled>
 					<span class="input-group-btn">
-						<button class="btn">Copy</button>
+						<button id="toClipb" class="btn" disabled>Copy</button>
 					</span>
 				</div>
 			</div>
