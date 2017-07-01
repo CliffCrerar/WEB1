@@ -1,0 +1,17 @@
+.bd1 {
+	border-style: solid;
+	border-color: black;
+}
+
+body{
+	background-color: #ff9955;
+}
+
+#wDiv {
+	background-color: rgba(255, 255, 255, 0.5);
+	margin: auto;
+	border-radius: 20px;
+
+	width: 50%;
+	height: 500px;	
+}

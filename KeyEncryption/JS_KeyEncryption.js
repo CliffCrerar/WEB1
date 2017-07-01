@@ -21,7 +21,8 @@ $(document).ready(function(){
 	$("#encryption").click(function(){
 		$("#encryption").removeClass("btn-warning");
 		$("#encryption").addClass("btn-success");	
-		
+		//comment
+		console.log($("#encryption").html());
 		if ($("#encryption").html() == "Encrypt") {
 			$("#keyOut").val(encrypt($("#keyInput").val()));
 		}
@@ -42,6 +43,7 @@ $(document).ready(function(){
 			oLetter = key[i];
 			nPos = key.codePointAt(i)+13;
 			nLetter = String.fromCharCode(nPos)
+			nKey = nKey + nLetter;
 		}
 		return nKey
 	}
