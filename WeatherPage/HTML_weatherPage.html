@@ -10,9 +10,13 @@
 </head>
 <body>
     <div class="container-fluid">
-        <h1 class="bd1">FreeCodeCamp WeatherPages</h1>
-        
+        <h1 class="bd1">FreeCodeCamp WeatherPage</h1>
+        <h4 id="ldng1">Page is Loading..........</h4>
+        <h2 id="cuCity"></h2>
+    </div>
+<!--Construction HTML below-->  
         <!--Temp div to see coordinates-->
+    <div class="container">
         <div class="bd1">
             <h3>Coordinates</h3>
             <p id="lat">Latitude</p>
@@ -25,8 +29,17 @@
             <p id="encLink"></p>
         </div>
 
-        <!--API weather object-->
-        <div id="dsObject">
+        <button type="button" class="btn btn-primary" disabled>Get Weather Object</button>
+        <!--Temp API data from weather object-->
+        <div class="bd1">
+            <h3>Dark sky object sectional data.</h3>
+            <p id="dsObjectPart">Part of the object only</p>
+        </div>
+        
+        <!--API weather object all data-->
+        <div class="bd1">
+            <h3>Dark sky API Weather forecast data</h3>
+            <p id="dsObject">JS Object must go here.</p>
         </div>
     </div>
 </body>

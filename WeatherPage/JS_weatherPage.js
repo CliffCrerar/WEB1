@@ -3,7 +3,7 @@ $(document).ready(function(){
 
     var posLat;
     var posLong;
-    var sUrl = 'https://api.darksky.net/forecast/';
+    var sUrl = 'https://crossorigin.me/https://api.darksky.net/forecast/';
     var encKey = 'o=Fo=>ADn>nprsDCE?ror==s=qAns>qC';
     var apiLink = '';
 
@@ -14,15 +14,30 @@ $(document).ready(function(){
             
             $("#lat").html(posLat);
             $("#long").html(posLong);
-            
+
             apiLink = sUrl+decrypt(encKey)+'/'+posLat+','+posLong
 
+            //Tempcode           
             $("#encLink").html(apiLink);
-
             console.log(posLat);
             console.log(posLong);
+            //End of tempcode            
+            $("#ldng1").html("");
+            $("button").removeAttr("disabled");
+            var ds = apiLink;
+            $("cuCity").html(forecast.timezone)
         });
     }
+
+    //Temp button to test API function
+    $("button:last").click(function(){
+        $.getJSON(apiLink,function(forecast){
+			console.log(forecast.timezone);
+            console.log(forecast);
+            $("#dsObject").html(JSON.stringify(forecast));
+            $("#dsObjectPart").html(JSON.stringify(forecast.currently));
+		});
+    });
 
     //Dycryption function
 	function decrypt(key) {
