@@ -18,26 +18,23 @@ $(document).ready(function(){
             apiLink = sUrl+decrypt(encKey)+'/'+posLat+','+posLong
 
             //Tempcode           
-            $("#encLink").html(apiLink);
             console.log(posLat);
             console.log(posLong);
             //End of tempcode            
-            $("#ldng1").html("");
-            $("button").removeAttr("disabled");
-            var ds = apiLink;
-            $("cuCity").html(forecast.timezone)
+            
+            $.getJSON(apiLink,function(forecast){
+                //console.log(forecast);
+                //City name
+                var tzSplit = forecast.timezone.split("/")
+                $("#cuCity").html("City: "+tzSplit[1]);
+                //Time
+                console.log(forecast.currently.time)
+                //Temprature
+                
+                $("#ldng1").html("");
+            });
         });
-    }
-
-    //Temp button to test API function
-    $("button:last").click(function(){
-        $.getJSON(apiLink,function(forecast){
-			console.log(forecast.timezone);
-            console.log(forecast);
-            $("#dsObject").html(JSON.stringify(forecast));
-            $("#dsObjectPart").html(JSON.stringify(forecast.currently));
-		});
-    });
+    }   
 
     //Dycryption function
 	function decrypt(key) {
@@ -55,6 +52,4 @@ $(document).ready(function(){
 		}
 		return nKey
 	}
-
-
 });
