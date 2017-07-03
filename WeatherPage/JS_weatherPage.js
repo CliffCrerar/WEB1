@@ -29,6 +29,8 @@ $(document).ready(function(){
                 $("#cuCity").html("City: "+tzSplit[1]);
                 //Time
                 console.log(forecast.currently.time)
+                var timeRaw = forecast.currently.time
+                $("#cuTime").html("Time: "+timeRaw)
                 //Temprature
                 
                 $("#ldng1").html("");
