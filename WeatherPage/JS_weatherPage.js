@@ -23,14 +23,25 @@ $(document).ready(function(){
             //End of tempcode            
             
             $.getJSON(apiLink,function(forecast){
-                //console.log(forecast);
-                //City name
+                console.log(forecast);
+                //timizone
                 var tzSplit = forecast.timezone.split("/")
                 $("#cuCity").html("City: "+tzSplit[1]);
-                //Time
+                //time
                 console.log(forecast.currently.time)
-                //Temprature
-                
+                $("#cuTime").html("Time: "+forecast.currently.time);
+                //temprature
+                //apparentTemperature
+                //summary
+                //icon
+                //precipIntensity
+                //precipProbability
+                //humidity
+                //windSpeed
+                //windBearing
+                //visibility
+                //cloudcover
+                //pressure
                 $("#ldng1").html("");
             });
         });
