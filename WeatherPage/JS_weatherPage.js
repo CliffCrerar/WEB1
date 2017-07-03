@@ -28,12 +28,15 @@ $(document).ready(function(){
                 var tzSplit = forecast.timezone.split("/")
                 $("#cuCity").html("City: "+tzSplit[1]);
                 //time
-                console.log(forecast.currently.time)
                 $("#cuTime").html("Time: "+forecast.currently.time);
                 //temprature
+                $("#cuTemp").html("Temprature: "+forecast.currently.temperature+" F")
                 //apparentTemperature
+                $("#cuTempA").html("Feels like: "+forecast.currently.apparentTemperature+" F")
                 //summary
+                $("#cuSummary").html("Summary: "+forecast.currently.summary);
                 //icon
+                $("#cuIcon").html("Icon: "+forecast.currently.icon);
                 //precipIntensity
                 //precipProbability
                 //humidity
