@@ -23,16 +23,37 @@ $(document).ready(function(){
             //End of tempcode            
             
             $.getJSON(apiLink,function(forecast){
-                //console.log(forecast);
-                //City name
+                console.log(forecast);
+                //timizone
                 var tzSplit = forecast.timezone.split("/")
                 $("#cuCity").html("City: "+tzSplit[1]);
+<<<<<<< HEAD
                 //Time
                 console.log(forecast.currently.time)
                 var timeRaw = forecast.currently.time
                 $("#cuTime").html("Time: "+timeRaw)
                 //Temprature
                 
+=======
+                //time
+                $("#cuTime").html("Time: "+forecast.currently.time);
+                //temprature
+                $("#cuTemp").html("Temprature: "+forecast.currently.temperature+" F")
+                //apparentTemperature
+                $("#cuTempA").html("Feels like: "+forecast.currently.apparentTemperature+" F")
+                //summary
+                $("#cuSummary").html("Summary: "+forecast.currently.summary);
+                //icon
+                $("#cuIcon").html("Icon: "+forecast.currently.icon);
+                //precipIntensity
+                //precipProbability
+                //humidity
+                //windSpeed
+                //windBearing
+                //visibility
+                //cloudcover
+                //pressure
+>>>>>>> a28192521e436a670f63821c04872c4f0bc0e4e0
                 $("#ldng1").html("");
             });
         });
