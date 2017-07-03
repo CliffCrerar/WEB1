@@ -1,78 +1,96 @@
-$(document).ready(function(){
-    console.log("JQ workings")
+$(document).ready(function() {
+  console.log("JQ workings");
+  $("#toggle").attr("disabled", true);
+  var posLat;
+  var posLong;
+  var sUrl = "https://crossorigin.me/https://api.darksky.net/forecast/";
+  var encKey = "o=Fo=>ADn>nprsDCE?ror==s=qAns>qC";
+  var apiLink = "";
 
-    var posLat;
-    var posLong;
-    var sUrl = 'https://crossorigin.me/https://api.darksky.net/forecast/';
-    var encKey = 'o=Fo=>ADn>nprsDCE?ror==s=qAns>qC';
-    var apiLink = '';
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      posLat = position.coords.latitude;
+      posLong = position.coords.longitude;
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position){
-            posLat = position.coords.latitude;
-            posLong = position.coords.longitude;
-            
-            $("#lat").html(posLat);
-            $("#long").html(posLong);
+      apiLink =
+        sUrl +
+        decrypt(encKey) +
+        "/" +
+        posLat +
+        "," +
+        posLong +
+        "?exclude=alerts,flags,units=ca";
 
-            apiLink = sUrl+decrypt(encKey)+'/'+posLat+','+posLong
+      //Tempcode
+      console.log(posLat);
+      console.log(posLong);
+      //End of tempcode
 
-            //Tempcode           
-            console.log(posLat);
-            console.log(posLong);
-            //End of tempcode            
-            
-            $.getJSON(apiLink,function(forecast){
-                console.log(forecast);
-                //timizone
-                var tzSplit = forecast.timezone.split("/")
-                $("#cuCity").html("City: "+tzSplit[1]);
-<<<<<<< HEAD
-                //Time
-                console.log(forecast.currently.time)
-                var timeRaw = forecast.currently.time
-                $("#cuTime").html("Time: "+timeRaw)
-                //Temprature
-                
-=======
-                //time
-                $("#cuTime").html("Time: "+forecast.currently.time);
-                //temprature
-                $("#cuTemp").html("Temprature: "+forecast.currently.temperature+" F")
-                //apparentTemperature
-                $("#cuTempA").html("Feels like: "+forecast.currently.apparentTemperature+" F")
-                //summary
-                $("#cuSummary").html("Summary: "+forecast.currently.summary);
-                //icon
-                $("#cuIcon").html("Icon: "+forecast.currently.icon);
-                //precipIntensity
-                //precipProbability
-                //humidity
-                //windSpeed
-                //windBearing
-                //visibility
-                //cloudcover
-                //pressure
->>>>>>> a28192521e436a670f63821c04872c4f0bc0e4e0
-                $("#ldng1").html("");
-            });
-        });
-    }   
+      getWeatherData(apiLink);
+    });
+  }
 
-    //Dycryption function
-	function decrypt(key) {
-		var keyLen = key.length;
-		var oLetter = '';
-		var nPos = 0;
-		var nLetter = '';
-		var nKey = ''
-						
-		for (i = 0; i < keyLen; i++) {
-			oLetter = key[i];
-			nPos = key.codePointAt(i)-13;
-			nLetter = String.fromCharCode(nPos)
-			nKey = nKey + nLetter;
-		}
-		return nKey
-	}
+  function getWeatherData(apiLink) {
+    //console.log(Date.now());
+    
+    $.getJSON(apiLink, function(forecast) {
+      console.log(forecast);
+      //timizone
+      var tzSplit = forecast.timezone.split("/");
+      $("#cuCity").html("City: " + tzSplit[1]);
+      //time
+      $("#cuTime").html("Time: ");
+      //temprature
+      $("#cuTemp").html("Temprature: " + forecast.currently.temperature + " F");
+      //apparentTemperature
+      $("#cuTempA").html("Feels like: " + forecast.currently.apparentTemperature + " F");
+      //summary
+      $("#cuSummary").html("Summary: " + forecast.currently.summary);
+      //icon
+      $("#cuIcon").html("Icon: " + forecast.currently.icon);
+      //precipIntensity
+      $("#cuPrecipInt").html("Precipitation Intensity: " + forecast.currently.precipIntensity);
+      //precipProbability
+      $("#cuPrecipProb").html("Chances of rain: " + forecast.currently.precipProbability);
+      //humidity
+      $("#cuHum").html("Humidity: " + forecast.currently.humidity);
+      //windSpeed
+      $("#cuWindSpeed").html("Windspeed: " + forecast.currently.windSpeed);
+      //windBearing
+      $("#cuWindBear").html("Bearing: " + forecast.currently.windBearing);
+      //cloudcover
+      $("#cuCloudCover").html("Cloud Cover: " + forecast.currently.cloudCover);
+      //pressure
+      $("#cuPressure").html("Pressure: " + forecast.currently.pressure);
+
+      $("#ldng1").html("");
+      $("#toggle").attr("disabled", false);
+    });
+  }
+
+  //Change to fahrenthiet
+  $("#toggle").change(function() {
+    if ($("#toggle")[0].checked) {
+      console.log("celsius");
+    } else {
+      console.log("Fahrentheit");
+    }
+  });
+
+  //Dycryption function
+  function decrypt(key) {
+    var keyLen = key.length;
+    var oLetter = "";
+    var nPos = 0;
+    var nLetter = "";
+    var nKey = "";
+
+    for (i = 0; i < keyLen; i++) {
+      oLetter = key[i];
+      nPos = key.codePointAt(i) - 13;
+      nLetter = String.fromCharCode(nPos);
+      nKey = nKey + nLetter;
+    }
+    return nKey;
+  }
 });
