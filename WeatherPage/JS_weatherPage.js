@@ -6,6 +6,11 @@ $(document).ready(function() {
   var sUrl = "https://crossorigin.me/https://api.darksky.net/forecast/";
   var encKey = "o=Fo=>ADn>nprsDCE?ror==s=qAns>qC";
   var apiLink = "";
+  var skycons = new Skycons({"color":"black"});
+
+  skycons.add("clear-day", Skycons.CLEAR_DAY);
+  skycons.add("clear-night", Skycons.CLEAR_NIGHT)
+  skycons.play();
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -97,4 +102,6 @@ $(document).ready(function() {
     }
     return nKey;
   }
+  //skycons
+
 });
