@@ -35,11 +35,15 @@ $(document).ready(function() {
     
     $.getJSON(apiLink, function(forecast) {
       console.log(forecast);
+
+      var d = new Date();
+      console.log(d.getTime());
+      
       //timizone
       var tzSplit = forecast.timezone.split("/");
       $("#cuCity").html("City: " + tzSplit[1]);
       //time
-      $("#cuTime").html("Time: ");
+      $("#cuTime").html("Time: "+forecast.currently.time);
       //temprature
       $("#cuTemp").html("Temprature: " + forecast.currently.temperature + " F");
       //apparentTemperature
@@ -71,7 +75,7 @@ $(document).ready(function() {
   //Change to fahrenthiet
   $("#toggle").change(function() {
     if ($("#toggle")[0].checked) {
-      console.log("celsius");
+      console.log("Celsius");
     } else {
       console.log("Fahrentheit");
     }
