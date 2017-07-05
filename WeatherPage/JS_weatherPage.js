@@ -9,7 +9,16 @@ $(document).ready(function() {
   var skycons = new Skycons({"color":"black"});
 
   skycons.add("clear-day", Skycons.CLEAR_DAY);
-  skycons.add("clear-night", Skycons.CLEAR_NIGHT)
+  skycons.add("clear-night", Skycons.CLEAR_NIGHT);
+  skycons.add("partly-cloudy-day", Skycons.PARTLY_CLOUDY_DAY);
+  skycons.add("partly-cloudy-night", Skycons.PARTLY_CLOUDY_NIGHT);
+  skycons.add("cloudy", Skycons.CLOUDY);
+  skycons.add("rain", Skycons.RAIN);
+  skycons.add("sleet", Skycons.SLEET);
+  skycons.add("snow", Skycons.SNOW)
+  skycons.add("wind", Skycons.WIND);
+  skycons.add("fog", Skycons.FOG);
+
   skycons.play();
 
   if (navigator.geolocation) {
