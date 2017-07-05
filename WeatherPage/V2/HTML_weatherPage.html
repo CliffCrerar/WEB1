@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Font Awesome-->
+    <script src="https://use.fontawesome.com/117c6a36cf.js"></script>
+    <!--Bootstrap Toggle-->
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <!--Skycons-->
+    <script src="/Users/cliffordcrerar/Documents/GitHub/WEB1/Skycons/skycons.js"></script>
+    <!--custom-->
+    
+    <link rel="stylesheet" href="/Users/cliffordcrerar/Documents/GitHub/WEB1/WeatherPage/CSS_WeatherPage.css">
+    <script src="/Users/cliffordcrerar/Documents/GitHub/WEB1/WeatherPage/JS_weatherPage.js"></script>
+    <!--
+    <link rel="stylesheet" href="C:\Users\clifford.crear\Documents\GitHub\WEB1\WeatherPage\CSS_weatherPage.css">
+    <script src="C:\Users\clifford.crear\Documents\GitHub\WEB1\WeatherPage\JS_weatherPage.js"></script>
+    -->
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <div class="row divHeading">
+            <div class="col-sm-6 text-center">
+                <h1>
+                    <span class="fa fa-free-code-camp"></span>
+                    FreeCodeCamp Weather
+                    <span class="fa fa-snowflake-o"></span>
+                </h1>
+            </div>
+            <div class="col-sm-6 text-center">
+                <input id="toggle" type="checkbox" data-toggle="toggle" data-on="&deg Celsius" data-off="&deg Fahrenheit" checked>
+            </div>
+        </div>
+
+        <!--temp data-->
+        <div class="row">
+            <div class="col-sm-6 bd1">
+                <!--Test Data retreival-->
+                <h4 id="ldng1">Page is Loading..........</h4>
+                <h3 id="cuCity"></h3>
+                <h3 id="cuTime"></h3>
+                <h3 id="cuTemp"></h3>
+                <h3 id="cuTempA"></h3>
+                <h3 id="cuSummary"></h3>
+                <h3 id="cuIcon"></h3>
+                <h3 id="cuPrecipInt"></h3>
+                <h3 id="cuPrecipProb"></h3>
+                <h3 id="cuHum"></h3>
+                <h3 id="cuWindSpeed"></h3>
+                <h3 id="cuWindBear"></h3>
+                <h3 id="cuCloudCover"></h3>
+                <h3 id="cuPressure"></h3>
+            </div>
+            <div class="col-sm-6 bd1">
+                
+                <p>Clear Day
+                    <span>
+                        <canvas id="clear-day" width="64" height="64">
+                        </canvas>
+                    </span>
+                </p>
+                
+                <p>Clear Night
+                    <span>
+                        <canvas id="clear-night" width="64" height="64">
+                        </canvas>
+                    </span>
+                </p>
+
+                <canvas id="partly-cloudy-day" width="64" height="64">
+                </canvas>
+
+                <canvas id="partly-cloudy-night" width="64" height="64">
+                </canvas>
+
+                <canvas id="cloudy" width="64" height="64">
+                </canvas>
+
+                <canvas id="rain" width="64" height="64">
+                </canvas>
+
+                <canvas id="sleet" width="64" height="64">
+                </canvas>
+
+                <canvas id="snow" width="64" height="64">
+                </canvas>
+
+                <canvas id="wind" width="64" height="64">
+                </canvas>
+
+                <canvas id="fog" width="64" height="64">
+                </canvas>                
+            </div>
+        </div> 
+    </div>
+</body>
+
+</html>
