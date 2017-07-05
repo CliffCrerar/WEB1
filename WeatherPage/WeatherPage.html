@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <title>FCC Weather</title>
+  
+    <head>
+        <!--Meta tags-->
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="description" content="Anywhere Weather App">
+	    <meta name="Author" content="Clifford Crerar">
+        <!--Bootstrap-->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!--Jquery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!--Bootstrap Toggle-->
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+        <!--font awesome-->
+	    <script src="https://use.fontawesome.com/117c6a36cf.js"></script>
+        
+<!--JavaScript-->
+        <script type="application/javascript">
+        $(document).ready(function(){
+            var imageURLStart = "http://tinyurl.com/yc64kz2y"
+
+
+            $("body").css("background-image","url('"+imageURLStart+"')");
+
+            //Change to fahrenthiet
+            $("#toggle").change(function() {
+                if ($("#toggle")[0].checked) {
+                    console.log("Celsius");
+                } else {
+                    console.log("Fahrentheit");
+                }
+            });
+
+
+        })
+   
+        
+        </script>
+
+<!--Custom CSS-->
+        <style type="text/css">
+            body{
+                background-attachment: fixed;
+	            background-size: cover;
+	            background-repeat: no-repeat;
+            }
+
+            .bd1 {
+                border: 1px solid white;                
+            }
+
+            h1{
+                font-size: 30px;
+                margin: 0px;
+            }
+
+            .nav{
+                font-family: Courier;
+                color: white;
+                background-color: #232323;
+                padding: 2% 0% 2% 0%;
+            }
+
+            #phbb {
+                height: 5px; 
+                background-color: #eeeeee
+            }
+
+            #loading {
+                color: white;
+                font-size: 20px;
+                margin: 2%
+            }
+
+            #weather {
+                background-color: rgba(0,0,0,0.8);
+                width: 500px;
+                margin: auto;
+                display: block;
+                border-radius: 20px;
+                height: 500px;
+            }
+            
+        </style>
+
+    </head>
+
+<!--Body-->
+    <body>
+        <div class="container-fluid">
+            <!--Navbar-->
+            <div class="row" id="phbb"></div>
+            <div class="nav row">
+                <div class="col-sm-9">
+                    <h1>
+                        <span class="fa fa-free-code-camp"></span>
+                            freeCodeCamp Weather
+                        <span class="fa fa-snowflake-o"></span>
+                    </h1>
+                </div>
+                <div class="col-sm-3">
+                    <input id="toggle" type="checkbox" data-toggle="toggle" data-on="&deg Celsius" data-off="&deg Fahrenheit" checked>
+                </div>
+            </div>
+            <div class="row" id="phbb"></div>
+            
+            <div id="weather" class="">
+                <p id="loading">Loading weather . . . . . <p>
+            </div>
+        </div>
+    </body>
+
+</html>
+
