@@ -17,14 +17,53 @@
         <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
         <!--font awesome-->
 	    <script src="https://use.fontawesome.com/117c6a36cf.js"></script>
+        <!--Skycons
+        <script src="/Users/cliffordcrerar/Documents/GitHub/WEB1/Skycons/skycons.js"></script>
+        -->
+        <script src="C:\Users\clifford.crear\Documents\GitHub\WEB1\Skycons\skycons.js"></script>
         
 <!--JavaScript-->
         <script type="application/javascript">
         $(document).ready(function(){
+            $("#toggle").attr("disabled", true);
+
+            //Image variables
             var imageURLStart = "http://tinyurl.com/yc64kz2y"
+            var imageURLSunnyDay = "http://tinyurl.com/yd4rl42o"
+            var imageURLColdDay = "http://tinyurl.com/y8b3owrm"
+            var imageURLCloudyDay = "http://tinyurl.com/yagqrpup"
+            $("body").css("background-image","url('"+imageURLCloudyDay+"')");
+            
+            //variables for weather data fetch
+            var posLat;
+            var posLong;
+            var sUrl = "https://crossorigin.me/https://api.darksky.net/forecast/";
+            var encKey = "o=Fo=>ADn>nprsDCE?ror==s=qAns>qC";
+            var apiLink = "";
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    posLat = position.coords.latitude;
+                    posLong = position.coords.longitude;
 
+                    apiLink = sUrl + decrypt(encKey) + "/" + posLat + "," + posLong + "?exclude=alerts,flags,units=ca";
 
-            $("body").css("background-image","url('"+imageURLStart+"')");
+                    //Tempcode
+                    console.log(posLat);
+                    console.log(posLong);
+                    //End of tempcode
+
+                    getWeatherData(apiLink);
+                });
+            }
+
+            //Get darksky object
+            function getWeatherData(apiLink) {
+                $.getJSON(apiLink, function(forecast){
+                    console.log(forecast);
+                    $("#loading").html("");
+                    $("#toggle").attr("disabled", false);
+                });
+            }
 
             //Change to fahrenthiet
             $("#toggle").change(function() {
@@ -35,6 +74,22 @@
                 }
             });
 
+            //Dycryption function
+            function decrypt(key) {
+                var keyLen = key.length;
+                var oLetter = "";
+                var nPos = 0;
+                var nLetter = "";
+                var nKey = "";
+
+                for (i = 0; i < keyLen; i++) {
+                    oLetter = key[i];
+                    nPos = key.codePointAt(i) - 13;
+                    nLetter = String.fromCharCode(nPos);
+                    nKey = nKey + nLetter;
+                }
+                return nKey;
+            }
 
         })
    
@@ -56,16 +111,24 @@
             h1{
                 font-size: 30px;
                 margin: 0px;
+                font-family: Courier;
             }
 
-            .nav{
-                font-family: Courier;
+            h2 {
+                color: white
+            }
+
+            h3 {
+                color: white;
+            }
+
+            .nav{                
                 color: white;
                 background-color: #232323;
                 padding: 2% 0% 2% 0%;
             }
 
-            #phbb {
+            .phbb {
                 height: 5px; 
                 background-color: #eeeeee
             }
@@ -79,21 +142,23 @@
             #weather {
                 background-color: rgba(0,0,0,0.8);
                 width: 500px;
-                margin: auto;
+                margin: calc(20px + 1vw) auto 0 auto;
+                padding: 1%;
                 display: block;
                 border-radius: 20px;
-                height: 500px;
             }
-            
-        </style>
 
+            img {
+                border-radius: 10px;
+            }
+        </style>
     </head>
 
 <!--Body-->
     <body>
         <div class="container-fluid">
             <!--Navbar-->
-            <div class="row" id="phbb"></div>
+            <div class="row phbb"></div>
             <div class="nav row">
                 <div class="col-sm-9">
                     <h1>
@@ -105,13 +170,23 @@
                 <div class="col-sm-3">
                     <input id="toggle" type="checkbox" data-toggle="toggle" data-on="&deg Celsius" data-off="&deg Fahrenheit" checked>
                 </div>
-            </div>
-            <div class="row" id="phbb"></div>
-            
+            </div>            
+            <div class="row phbb"></div>        
+
             <div id="weather" class="">
-                <p id="loading">Loading weather . . . . . <p>
+                <p id="loading">Loading weather . . . . . </p>
+                <h2 id="city" class="text-center">City</h2>
+                <canvas id="canvas" width="150" height="150"></canvas>
+                <h3 id="summary" class="text-center">Summary</h3>
+                <h3 id="temp" class="text-center">temperature</h3>
+                <h3 id="wind" class="text-center">windSpeed</h3>
+                <h3 id="later" class="text-center">later</h3>
+                <h2 class="text-center">Tomorrow</h2>            
             </div>
+            <p style="color: white;">Powered by:</p>
+            <img src="http://tinyurl.com/y9jjn3bb">        
         </div>
+    
     </body>
 
 </html>

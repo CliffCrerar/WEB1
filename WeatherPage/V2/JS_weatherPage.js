@@ -6,6 +6,7 @@ $(document).ready(function() {
   var sUrl = "https://crossorigin.me/https://api.darksky.net/forecast/";
   var encKey = "o=Fo=>ADn>nprsDCE?ror==s=qAns>qC";
   var apiLink = "";
+
   var skycons = new Skycons({"color":"black"});
 
   skycons.add("clear-day", Skycons.CLEAR_DAY);
@@ -31,7 +32,7 @@ $(document).ready(function() {
       console.log(posLong);
       //End of tempcode
 
-      getWeatherData(apiLink);
+      //getWeatherData(apiLink);
     });
   }
 
