@@ -17,35 +17,44 @@
         <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
         <!--font awesome-->
 	    <script src="https://use.fontawesome.com/117c6a36cf.js"></script>
-        <!--Skycons
+        <!--Skycons-->
         <script src="/Users/cliffordcrerar/Documents/GitHub/WEB1/Skycons/skycons.js"></script>
-        -->
+        <!--
         <script src="C:\Users\clifford.crear\Documents\GitHub\WEB1\Skycons\skycons.js"></script>
-        
+        -->
 <!--JavaScript-->
         <script type="application/javascript">
         $(document).ready(function(){
-            $("#toggle").attr("disabled", true);
+            $("#toggle").attr("disabled", true); //disable toggle
+            var skycons = new Skycons({"color":"white"});             
 
             //Image variables
             var imageURLStart = "http://tinyurl.com/yc64kz2y"
             var imageURLSunnyDay = "http://tinyurl.com/yd4rl42o"
             var imageURLColdDay = "http://tinyurl.com/y8b3owrm"
             var imageURLCloudyDay = "http://tinyurl.com/yagqrpup"
-            $("body").css("background-image","url('"+imageURLCloudyDay+"')");
-            
+            $("body").css("background-image","url('"+imageURLStart+"')");
+
+            //Weather Variables
+            var F = 0;            
+            var windSpeed = 0;
+            var tomTempMax = 0;
+            var tomTempMin = 0;
+
             //variables for weather data fetch
             var posLat;
             var posLong;
             var sUrl = "https://crossorigin.me/https://api.darksky.net/forecast/";
             var encKey = "o=Fo=>ADn>nprsDCE?ror==s=qAns>qC";
             var apiLink = "";
+
+            //get coordinates and 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     posLat = position.coords.latitude;
                     posLong = position.coords.longitude;
 
-                    apiLink = sUrl + decrypt(encKey) + "/" + posLat + "," + posLong + "?exclude=alerts,flags,units=ca";
+                    apiLink = sUrl + decrypt(encKey) + "/" + posLat + "," + posLong + "?exclude=alerts,flags";
 
                     //Tempcode
                     console.log(posLat);
@@ -56,10 +65,30 @@
                 });
             }
 
-            //Get darksky object
+            //Get darksky object and set weather variables
             function getWeatherData(apiLink) {
                 $.getJSON(apiLink, function(forecast){
                     console.log(forecast);
+                    //Timezone
+                    $('#city').html(forecast.timezone.split("/")[1]+", "+forecast.timezone.split("/")[0])
+                    //Weather icon
+                    skycons.add("canvas", Skycons.CLEAR_DAY);
+                    skycons.play();
+
+                    //summary
+                    $("#summary").html(forecast.currently.summary);
+
+                    F = forecast.currently.temperature;
+                    var C = (((F - 32) * 5) / 9);
+                    windSpeed = forecast.currently.windSpeed
+                    var windSpeedKm = windSpeed * 1.6
+
+                    //Set Temprature in C               
+                    $('#temp').html(Math.round(C)+"&deg C");
+                    //Set Windspeed in Km
+                    $('#wind').html(Math.round(windSpeedKm)+" km wind")
+
+
                     $("#loading").html("");
                     $("#toggle").attr("disabled", false);
                 });
@@ -69,8 +98,12 @@
             $("#toggle").change(function() {
                 if ($("#toggle")[0].checked) {
                     console.log("Celsius");
+                    console.log(apiLink)
+                    //getWeatherData(apilink,"C")
                 } else {
                     console.log("Fahrentheit");
+                    console.log(apiLink)
+                    //getWeatherData(apilink)
                 }
             });
 
@@ -151,6 +184,12 @@
             img {
                 border-radius: 10px;
             }
+
+            canvas {
+                display: block;
+                margin: auto;
+            }
+
         </style>
     </head>
 
