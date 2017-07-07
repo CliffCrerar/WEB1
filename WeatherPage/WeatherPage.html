@@ -26,6 +26,7 @@
         <script type="application/javascript">
         $(document).ready(function(){
             $("#toggle").attr("disabled", true); //disable toggle
+            $("#weather").hide() //hide weather info until API is loaded
             var skycons = new Skycons({"color":"white"});             
 
             //Image variables
@@ -33,7 +34,7 @@
             var imageURLSunnyDay = "http://tinyurl.com/yd4rl42o"
             var imageURLColdDay = "http://tinyurl.com/y8b3owrm"
             var imageURLCloudyDay = "http://tinyurl.com/yagqrpup"
-            $("body").css("background-image","url('"+imageURLStart+"')");
+            $("body").css("background-image","url('"+imageURLCloudyDay+"')");
 
             //Weather Variables
             var nowSum = '';
@@ -89,24 +90,30 @@
                     tomSum = forecast.daily.data[1].summary;
                     tomWind = forecast.daily.data[1].windSpeed;
                     tomTempMin = forecast.daily.data[1].temperatureMin;
-                    tomTempMax = forecast.daily.data[1].temperatureMax;
-                    
-                    $('#city').html(forecast.timezone.split("/")[1]+", "+forecast.timezone.split("/")[0]) //Set Timezone
+                    tomTempMax = forecast.daily.data[1].temperatureMax;        
 
-                    var Skycon = nowIcon.split("-").join("_").toUpperCase(); //convert DS data to SC data format
-                    skycons.add("canvas", Skycons[Skycon]); //Set Weather icon
+                    skycons.add("canvas", Skycons[nowIcon.split("-").join("_").toUpperCase()]); //Set Weather icon
                     skycons.play(); //start icon animation
 
-                    $("#summary").html(nowSum); //Set current Summary
+                    $('#city').html(forecast.timezone.split("/")[1]+", "+forecast.timezone.split("/")[0]) //Set Timezone
+                    
+                    $("#nowSum").html(nowSum); //Set current Summary
+                    $('#nowTemp').html(Math.round(((nowtemp-32)*5)/9)+"&deg C"); //assign temprature in C to html
+                    $('#nowWind').html('<span class="fa fa-compass"></span>'+Math.round(nowWind*1.6)+' km') //assign windspeen in km to html
+                    
+                    $('#todSum').html(todSum);
+                    $('#todWind').html('<span class="fa fa-compass"></span>'+Math.round(todWind*1.6)+' km');
+                    $('#todTempMin').html('<span class="fa fa-thermometer-quarter"></span>' +Math.round((((todTempMin-32)*5)/9))+'&deg C');
+                    $('#todTempMax').html('<span class="fa fa-thermometer-three-quarters"></span>'+Math.round((((todTempMax-32)*5)/9))+'&deg C');
 
-                    var C = (((nowTemp - 32) * 5) / 9); //fahrenheit to celsius
-                    var windSpeedKm = windSpeed * 1.6 //convert windspeen from miles to km per hour
+                    $('#tomSum').html(tomSum);
+                    $('#tomWind').html('<span class="fa fa-compass"></span>'+Math.round(tomWind*1.6)+' km');
+                    $('#tomTempMin').html('<span class="fa fa-thermometer-quarter"></span>'+Math.round(((tomTempMin-32)*5)/9)+'&deg C')
+                    $('#tomTempMax').html('<span class="fa fa-thermometer-three-quarters"></span>'+Math.round(((tomTempMax-32)*5)/9)+'&deg C')
 
-                    $('#temp').html(Math.round(C)+"&deg C"); //assign temprature in C to html
-                    $('#wind').html(Math.round(windSpeedKm)+" km wind") //assign windspeen in km to html
-
-                    $("#loading").html("");
+                    $("#loading").hide();
                     $("#toggle").attr("disabled", false);
+                    $("#weather").show()
                 });
             }
 
@@ -206,6 +213,15 @@
                 margin: auto;
             }
 
+            span{
+                margin: 0px 3px 0px 3px
+            }
+            .fig {
+                background-color: rgba(255, 255, 255, 0.3);
+                /*border: 5px solid black;*/
+                border-radius: 20px
+            }
+
         </style>
     </head>
 
@@ -228,63 +244,89 @@
             </div>            
             <div class="row phbb"></div>        
 
+            <div id="loading">
+                <h4>Loading weather . . . . . </h4>            
+                <p style="color: white;">Powered by:</p>
+                <img src="http://tinyurl.com/y9jjn3bb">
+            </div>
+            
             <div id="weather">
-                <p id="loading">Loading weather . . . . . </p>
                 <h2 id="city" class="text-center">City</h2>
                 <canvas id="canvas" width="100" height="100"></canvas>
+
                 <!--Forecast for right now-->
                 <div style="padding: 0 20px 0 20px;">
                     <h2 id="now">Right now:</h2>
-                    <h3 id="summary" class="text-center">Summary</h3>
-                    <h3 id="temp" class="text-center">temperature</h3>
-                    <h3 id="wind" class="text-center">windSpeed</h3>
+                    <div class="row fig">                        
+                        <div class="col-sm-4">
+                            <h3 id="nowSum" class="text-center">
+                                nowSum</h3>
+                        </div>
+                        <div class="col-sm-4">
+                            <h3 id="nowWind" class="text-center">
+                                <span class="fa fa-compass"></span>
+                                nowWind</h3>
+                        </div>
+                        <div class="col-sm-4">
+                            <h3 id="nowTemp" class="text-center">
+                                <span class="fa fa-thermometer-half"></span>
+                                nowTemp</h3>
+                        </div>
+                    </div>
                 </div>
 
                 <!--forecast for the day-->
                 <div style="padding: 0 20px 0 20px;">
-                    <h2 id="later">Today:</h2>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 id="todSum" class="text-center">Today Summary</h3>
+                    <h2 id="tod">Today:</h2>
+                    <div class="fig">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h3 id="todSum" class="text-center">Today Summary</h3>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <h3 id="todWind" class="text-center">Today Wind</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 id="todTempMin" class="text-center">TodMin</h3>
-                        </div>
-                        <div class="col-sm-6">
-                            <h3 id="todTempMax" class="text-center">TodMax</h3>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h3 id="todWind" class="text-center">
+                                    TodWind</h3>
+                            </div>
+                            <div class="col-sm-4">
+                                <h3 id="todTempMin" class="text-center">                                
+                                    <span class='fa fa-thermometer-quarter'></span>
+                                    TodMin</h3>
+                            </div>
+                            <div class="col-sm-4">
+                                <h3 id="todTempMax" class="text-center">                                                     
+                                    <span class="fa fa-thermometer-three-quarters"></span>
+                                    TodMax</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!--forecast for the tomorrow-->
                 <div style="padding: 0 20px 0 20px;">
-                    <h2>Tomorrow:</h2>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 id="tomSum" class="text-center">Tomorrow Summary</h3>
+                    <h2 id="tom">Tomorrow:</h2>
+                    <div class="fig">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h3 id="tomSum" class="text-center"></h3>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <h3 id="tomWind" class="text-center">Tomorrow Wind</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 id="tomTempMin" class="text-center">TomMin</h3>
-                        </div>
-                        <div class="col-sm-6">
-                            <h3 id="tomTempMax" class="text-center">TomMax</h3>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h3 id="tomWind" class="text-center"></h3>
+                            </div>
+                            <div class="col-sm-4">
+                                <h3 id="tomTempMin" class="text-center"></h3>
+                            </div>
+                            <div class="col-sm-4">
+                                <h3 id="tomTempMax" class="text-center"></h3>
+                            </div>
                         </div>
                     </div>
                 </div>
                             
-            </div>
-            <p style="color: white;">Powered by:</p>
-            <img src="http://tinyurl.com/y9jjn3bb">        
+            </div>        
         </div>
     
     </body>
