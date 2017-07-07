@@ -17,11 +17,11 @@
         <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
         <!--font awesome-->
 	    <script src="https://use.fontawesome.com/117c6a36cf.js"></script>
-        <!--Skycons-->
-        <script src="/Users/cliffordcrerar/Documents/GitHub/WEB1/Skycons/skycons.js"></script>
-        <!--
+        <!--Skycons
+        <script src="/Users/cliffordcrerar/Documents/GitHub/WEB1/Skycons/skycons.js"></script>-->
+        
         <script src="C:\Users\clifford.crear\Documents\GitHub\WEB1\Skycons\skycons.js"></script>
-        -->
+        
 <!--JavaScript-->
         <script type="application/javascript">
         $(document).ready(function(){
@@ -36,10 +36,17 @@
             $("body").css("background-image","url('"+imageURLStart+"')");
 
             //Weather Variables
-            var F = 0;            
-            var windSpeed = 0;
-            var tomTempMax = 0;
+            var nowSum = '';
+            var nowTemp = 0;
+            var nowWind = 0;
+            var todSum = '';
+            var todWind = 0;
+            var todTempMin = 0;
+            var todTempMax = 0;
+            var tomSum = '';
+            var tomWind = 0;
             var tomTempMin = 0;
+            var tomTempMax = 0;
 
             //variables for weather data fetch
             var posLat;
@@ -48,19 +55,16 @@
             var encKey = "o=Fo=>ADn>nprsDCE?ror==s=qAns>qC";
             var apiLink = "";
 
-            //get coordinates and 
+            //get coordinates and generate API Link
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     posLat = position.coords.latitude;
                     posLong = position.coords.longitude;
-
                     apiLink = sUrl + decrypt(encKey) + "/" + posLat + "," + posLong + "?exclude=alerts,flags";
-
                     //Tempcode
                     console.log(posLat);
                     console.log(posLong);
                     //End of tempcode
-
                     getWeatherData(apiLink);
                 });
             }
@@ -69,9 +73,24 @@
             function getWeatherData(apiLink) {
                 $.getJSON(apiLink, function(forecast){
                     console.log(forecast);
-                    //Timezone
+                    //Set all weather variables default values
+                    nowSum = forecast.currently.summary;
+                    nowTemp = forecast.currently.temperature;
+                    nowWind = forecast.currently.windSpeed;
+
+                    todSum = forecast.data[0].summary;
+                    todWind = forecast.daily.data[0].windSpeed;                      
+                    todTempMin = forecast.daily.data[0].temperatureMin;
+                    todTempMax = forecast.daily.data[0].temperatureMax;
+
+                    tomSum = forecast.data[1].summary;
+                    tomWind = forecast.daily.data[1].windSpeed;
+                    tomTempMin = forecast.daily.data[1].temperatureMin;
+                    tomTempMax = forecast.daily.data[1].temperatureMax;
+
+                    //Set Timezone
                     $('#city').html(forecast.timezone.split("/")[1]+", "+forecast.timezone.split("/")[0])
-                    //Weather icon
+                    //Set Weather icon
                     skycons.add("canvas", Skycons.CLEAR_DAY);
                     skycons.play();
 
@@ -87,7 +106,6 @@
                     $('#temp').html(Math.round(C)+"&deg C");
                     //Set Windspeed in Km
                     $('#wind').html(Math.round(windSpeedKm)+" km wind")
-
 
                     $("#loading").html("");
                     $("#toggle").attr("disabled", false);
@@ -174,7 +192,7 @@
 
             #weather {
                 background-color: rgba(0,0,0,0.8);
-                width: 500px;
+                width: 600px;
                 margin: calc(20px + 1vw) auto 0 auto;
                 padding: 1%;
                 display: block;
@@ -212,15 +230,60 @@
             </div>            
             <div class="row phbb"></div>        
 
-            <div id="weather" class="">
+            <div id="weather">
                 <p id="loading">Loading weather . . . . . </p>
                 <h2 id="city" class="text-center">City</h2>
                 <canvas id="canvas" width="150" height="150"></canvas>
-                <h3 id="summary" class="text-center">Summary</h3>
-                <h3 id="temp" class="text-center">temperature</h3>
-                <h3 id="wind" class="text-center">windSpeed</h3>
-                <h3 id="later" class="text-center">later</h3>
-                <h2 class="text-center">Tomorrow</h2>            
+                <!--Forecast for right now-->
+                <div style="padding: 0 20px 0 20px;">
+                    <h2 id="now">Right now:</h2>
+                    <h3 id="summary" class="text-center">Summary</h3>
+                    <h3 id="temp" class="text-center">temperature</h3>
+                    <h3 id="wind" class="text-center">windSpeed</h3>
+                </div>
+
+                <!--forecast for the day-->
+                <div style="padding: 0 20px 0 20px;">
+                    <h2 id="later">Today:</h2>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 id="todSum" class="text-center">Today Summary</h3>
+                        </div>
+                        <div class="col-sm-6">
+                            <h3 id="todWind" class="text-center">Today Wind</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 id="todTempMin" class="text-center">TodMin</h3>
+                        </div>
+                        <div class="col-sm-6">
+                            <h3 id="todTempMax" class="text-center">TodMax</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!--forecast for the tomorrow-->
+                <div style="padding: 0 20px 0 20px;">
+                    <h2>Tomorrow:</h2>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 id="tomSum" class="text-center">Tomorrow Summary</h3>
+                        </div>
+                        <div class="col-sm-6">
+                            <h3 id="tomWind" class="text-center">Tomorrow Wind</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 id="tomTempMin" class="text-center">TomMin</h3>
+                        </div>
+                        <div class="col-sm-6">
+                            <h3 id="tomTempMax" class="text-center">TomMax</h3>
+                        </div>
+                    </div>
+                </div>
+                            
             </div>
             <p style="color: white;">Powered by:</p>
             <img src="http://tinyurl.com/y9jjn3bb">        
