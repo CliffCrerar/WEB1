@@ -30,11 +30,16 @@
             var skycons = new Skycons({"color":"white"});             
 
             //Image variables
-            var imageURLStart = "http://tinyurl.com/yc64kz2y"
-            var imageURLSunnyDay = "http://tinyurl.com/yd4rl42o"
-            var imageURLColdDay = "http://tinyurl.com/y8b3owrm"
-            var imageURLCloudyDay = "http://tinyurl.com/yagqrpup"
-            $("body").css("background-image","url('"+imageURLCloudyDay+"')");
+            var imageURLLoading = 'http://tinyurl.com/yc64kz2y'
+            var imageURLClearDay = 'http://tinyurl.com/yd4rl42o'
+            var imageURLClearNight = 'http://tinyurl.com/yconzlaj'
+            var imageURLRain = 'http://tinyurl.com/y7xdps6g'
+            var imageURLSnowSleet = 'http://tinyurl.com/y8b3owrm'
+            var imageURLWind = 'http://tinyurl.com/y7fyz4hy'
+            var imageURLFog = 'http://tinyurl.com/y9khzgzt'
+            var imageURLCloudyDay = 'http://tinyurl.com/yagqrpup'
+            var imageURLCloudyNight = 'http://tinyurl.com/y8vqujzr'
+            $("body").css("background-image","url('"+imageURLLoading+"')");//set default background;
 
             //Weather Variables
             var nowSum = '';
@@ -63,25 +68,21 @@
                     posLat = position.coords.latitude;
                     posLong = position.coords.longitude;
                     apiLink = sUrl + decrypt(encKey) + "/" + posLat + "," + posLong + "?exclude=alerts,flags";
-                    //Tempcode
-                    console.log(posLat);
-                    console.log(posLong);
-                    //End of tempcode
                     getWeatherData(apiLink);
                 });
             }
 
-            //Get darksky object and set weather variables
+            //wGet darksky object and set weather variables
             function getWeatherData(apiLink) {
                 $.getJSON(apiLink, function(forecast){
-                    console.log(forecast);
+                    //console.log(forecast);
+
                     //Set all weather variables default values
                     nowSum = forecast.currently.summary;
                     nowTemp = forecast.currently.temperature;
                     nowWind = forecast.currently.windSpeed;
                     nowIcon = forecast.currently.icon
-                        //nowIcon = "partly-cloudy-day"
-
+                    
                     todSum = forecast.daily.data[0].summary;
                     todWind = forecast.daily.data[0].windSpeed;                      
                     todTempMin = forecast.daily.data[0].temperatureMin;
@@ -98,35 +99,73 @@
                     $('#city').html(forecast.timezone.split("/")[1]+", "+forecast.timezone.split("/")[0]) //Set Timezone
                     
                     $("#nowSum").html(nowSum); //Set current Summary
-                    $('#nowTemp').html(Math.round(((nowtemp-32)*5)/9)+"&deg C"); //assign temprature in C to html
+                    $('#nowTemp').html(Math.round(((nowTemp-32)*5)/9)+"&deg C"); //assign temprature in C to html
                     $('#nowWind').html('<span class="fa fa-compass"></span>'+Math.round(nowWind*1.6)+' km') //assign windspeen in km to html
                     
-                    $('#todSum').html(todSum);
-                    $('#todWind').html('<span class="fa fa-compass"></span>'+Math.round(todWind*1.6)+' km');
-                    $('#todTempMin').html('<span class="fa fa-thermometer-quarter"></span>' +Math.round((((todTempMin-32)*5)/9))+'&deg C');
-                    $('#todTempMax').html('<span class="fa fa-thermometer-three-quarters"></span>'+Math.round((((todTempMax-32)*5)/9))+'&deg C');
+                    $('#todSum').html(todSum); //set today sumary to html
+                    $('#todWind').html('<span class="fa fa-compass"></span>'+Math.round(todWind*1.6)+' km'); //set today windspeed to html
+                    $('#todTempMin').html('<span class="fa fa-thermometer-quarter"></span>' +Math.round((((todTempMin-32)*5)/9))+'&deg C'); //set today min to html
+                    $('#todTempMax').html('<span class="fa fa-thermometer-three-quarters"></span>'+Math.round((((todTempMax-32)*5)/9))+'&deg C'); // set today max to html
 
-                    $('#tomSum').html(tomSum);
-                    $('#tomWind').html('<span class="fa fa-compass"></span>'+Math.round(tomWind*1.6)+' km');
-                    $('#tomTempMin').html('<span class="fa fa-thermometer-quarter"></span>'+Math.round(((tomTempMin-32)*5)/9)+'&deg C')
-                    $('#tomTempMax').html('<span class="fa fa-thermometer-three-quarters"></span>'+Math.round(((tomTempMax-32)*5)/9)+'&deg C')
+                    $('#tomSum').html(tomSum); //set tomorrows summary tohtml
+                    $('#tomWind').html('<span class="fa fa-compass"></span>'+Math.round(tomWind*1.6)+' km'); //set tomorrows windspeed to html
+                    $('#tomTempMin').html('<span class="fa fa-thermometer-quarter"></span>'+Math.round(((tomTempMin-32)*5)/9)+'&deg C') //assign tomorrow min to html
+                    $('#tomTempMax').html('<span class="fa fa-thermometer-three-quarters"></span>'+Math.round(((tomTempMax-32)*5)/9)+'&deg C') //assign tomorrows max to html
 
-                    $("#loading").hide();
-                    $("#toggle").attr("disabled", false);
-                    $("#weather").show()
+                    $("#loading").hide(); //hide loading 
+                    $("#toggle").attr("disabled", false);//enable toggle button
+                    $("#weather").show() //show weather div
+
+                    setBackground(nowIcon);
                 });
+            }
+
+            function setBackground(icon) {
+                switch (icon) { //case to set background image
+                    case ('clear-day'): $('body').css('background-image','url("'+imageURLClearDay+'")'); 
+                        break;
+                    case ('clear-night'): $('body').css('background-image','url("'+imageURLClearNight+'")'); 
+                        break;
+                    case ('rain'): $('body').css('background-image','url("'+imageURLRain+'")'); 
+                        break;
+                    case ('snow'): $('body').css('background-image','url("'+imageURLSnowSleet+'")'); 
+                        break;
+                    case ('sleet'): $('body').css('background-image','url("'+imageURLSnowSleet+'")'); 
+                        break;
+                    case ('wind'): $('body').css('background-image','url("'+imageURLWind+'")'); 
+                        break;
+                    case ('fog'): $('body').css('background-image','url("'+imageURLFog+'")'); 
+                        break;
+                    case ('cloudy'): $('body').css('background-image','url("'+imageURLCloudyDay+'")'); 
+                        break;
+                    case ('partly-cloudy-day'): $('body').css('background-image','url("'+imageURLCloudyDay+'")'); 
+                        break;
+                    case ('partly-cloudy-night'): $('body').css('background-image','url("'+imageURLCloudyNight+'")'); 
+                        break;
+                    default: $("body").css("background-image","url('"+imageURLLoading+"')");//set default background;
+                }
             }
 
             //Change to fahrenthiet
             $("#toggle").change(function() {
                 if ($("#toggle")[0].checked) {
-                    console.log("Celsius");
-                    console.log(apiLink)
-                    //getWeatherData(apilink,"C")
+                    $('#nowTemp').html(Math.round(((nowTemp-32)*5)/9)+"&deg C"); //assign temprature in C to html
+                    $('#nowWind').html('<span class="fa fa-compass"></span>'+Math.round(nowWind*1.6)+' km') //assign windspeen in km to html
+                    $('#todWind').html('<span class="fa fa-compass"></span>'+Math.round(todWind*1.6)+' km'); //set today windspeed to html
+                    $('#todTempMin').html('<span class="fa fa-thermometer-quarter"></span>' +Math.round((((todTempMin-32)*5)/9))+'&deg C'); //set today min to html
+                    $('#todTempMax').html('<span class="fa fa-thermometer-three-quarters"></span>'+Math.round((((todTempMax-32)*5)/9))+'&deg C'); // set today max to html
+                    $('#tomWind').html('<span class="fa fa-compass"></span>'+Math.round(tomWind*1.6)+' km'); //set tomorrows windspeed to html
+                    $('#tomTempMin').html('<span class="fa fa-thermometer-quarter"></span>'+Math.round(((tomTempMin-32)*5)/9)+'&deg C') //assign tomorrow min to html
+                    $('#tomTempMax').html('<span class="fa fa-thermometer-three-quarters"></span>'+Math.round(((tomTempMax-32)*5)/9)+'&deg C') //assign tomorrows max to html
                 } else {
-                    console.log("Fahrentheit");
-                    console.log(apiLink)
-                    //getWeatherData(apilink)
+                    $('#nowTemp').html(Math.round(nowTemp)+"&deg F"); //assign temprature in C to html
+                    $('#nowWind').html('<span class="fa fa-compass"></span>'+Math.round(nowWind)+' mph') //assign windspeen in km to html
+                    $('#todWind').html('<span class="fa fa-compass"></span>'+Math.round(todWind)+' mph'); //set today windspeed to html
+                    $('#todTempMin').html('<span class="fa fa-thermometer-quarter"></span>' +Math.round(todTempMin)+'&deg F'); //set today min to html
+                    $('#todTempMax').html('<span class="fa fa-thermometer-three-quarters"></span>'+Math.round(todTempMax)+'&deg F'); // set today max to html
+                    $('#tomWind').html('<span class="fa fa-compass"></span>'+Math.round(tomWind)+' mph'); //set tomorrows windspeed to html
+                    $('#tomTempMin').html('<span class="fa fa-thermometer-quarter"></span>'+Math.round(tomTempMin)+'&deg F') //assign tomorrow min to html
+                    $('#tomTempMax').html('<span class="fa fa-thermometer-three-quarters"></span>'+Math.round(tomTempMax)+'&deg F') //assign tomorrows max to html                    
                 }
             });
 
@@ -216,6 +255,7 @@
             span{
                 margin: 0px 3px 0px 3px
             }
+            
             .fig {
                 background-color: rgba(255, 255, 255, 0.3);
                 /*border: 5px solid black;*/
@@ -244,12 +284,14 @@
             </div>            
             <div class="row phbb"></div>        
 
+            <!--Loading-->
             <div id="loading">
                 <h4>Loading weather . . . . . </h4>            
                 <p style="color: white;">Powered by:</p>
                 <img src="http://tinyurl.com/y9jjn3bb">
             </div>
             
+            <!--Weather data container-->
             <div id="weather">
                 <h2 id="city" class="text-center">City</h2>
                 <canvas id="canvas" width="100" height="100"></canvas>
