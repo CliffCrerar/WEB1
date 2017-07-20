@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <style>
             *{box-sizing: border-box}
 
@@ -12,7 +13,7 @@
             }
 
             .mySlides {
-                /*display: none;*/
+                display: none;
             }
 
             .prev, .next {
@@ -65,21 +66,31 @@
                 to {opacity: 1}
             }
             @keyframes fade {
-            from {opacity: .4} 
-            to {opacity: 1}
+                from {opacity: .4} 
+                to {opacity: 1}
             }
                         
         </style>
         <script>
-            var slideIndex = 1            
+            var slideIndex = 1
+            
+            testSlides = document.getElementsByClassName("mySlides");
+            testSlides2 = testSlides.length;
+            console.log(testSlides)
+            console.log(testSlides[0]);
+            console.log(testSlides2);
+            
+            //showSlides(slideIndex)     
 
-            function showSlides(n){
-                var i;
+            function showSlides(n){             
                 var slides = document.getElementsByClassName("mySlides");
-                
+                if(n > slides.length) {slideIndex = 1};
+                if(n < 1) {slideIndex = slides.length};
+                for(i = 0;i < slides.length;i++) {
+                    slides[i].style.display = 'none';
+                };
+                slides[1].style.display = 'block';  
             }
-
-            console.log(document.getElementsByClassName("mySlides"));
 
         </script>    
     </head>
@@ -110,12 +121,12 @@
 
         </div>
         <br>
-
+        <!--
         <div style="text-align: center">
             <span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
-        </div>
+        </div>-->
 
     </body>
 </html>
