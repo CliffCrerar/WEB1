@@ -60,6 +60,9 @@
                 background-color: #bbb;
                 display: inline-block;
             }
+            .active, dot:hover {
+                background-color: #717171;
+            }
 
             /* Fading animation */
             .fade{
@@ -92,17 +95,25 @@
             }
 
             function showSlides(n){             
-                var slides = $('.mySlides')
+                var slides = $('.mySlides');
+                var dots = $('.dot');
                 if(n > slides.length) {slideIndex = 1};
                 if(n < 1) {slideIndex = slides.length};
                 for(i = 0;i < slides.length;i++) {
                     slides[i].style.display = 'none';
                 };
-                slides[slideIndex - 1].style.display = 'block';  
+                for(i=0;i<dots.length;i++) {
+                    dots[i].className = dots[i].className.replace(' active','')
+                } 
+                slides[slideIndex - 1].style.display = 'block';
+                dots[slideIndex-1].className += ' active';  
             }
 
             $('.prev').click(function(){plusSlides(-1)});
             $('.next').click(function(){plusSlides(1)});
+            
+            console.log($('.dot'))
+
         });
         </script>    
     </head>
@@ -135,9 +146,9 @@
         <br>
         
         <div style="text-align: center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
+            <span id="1" class="dot" onclick="currentSlide(1)"></span>
+            <span id="2" class="dot"></span>
+            <span id="3" class="dot"></span>
         </div>
 
     </body>
