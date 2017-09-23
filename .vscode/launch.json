@@ -8,13 +8,8 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceRoot}/app.js"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Program",
-            "program": "${file}"
+            "program": "${workspaceRoot}/Wikipedia Viewer/HTML_wikiViewer.html"
         }
-    ]
+
+    ]//Users/cliffordcrerar/Github/WEB1/Wikipedia Viewer
 }

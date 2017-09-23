@@ -7,7 +7,7 @@
 
         <!--Jquery-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="/Users/cliffordcrerar/Github/WEB1/jQuery/jquery-3.2.1.min.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <!--font awesome-->
@@ -30,7 +30,37 @@
         <script type="application/javascript">
             $(document).ready(function(){
                 console.log("jQuery ready")
-                
+
+                $('#searchButton').click(function(){
+                    var val1 = $('#searchBox').val()
+                    console.log(val1)
+
+                    /*
+                    var url1 = 'https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json'
+                    $.getJSON(url1, function(wiki){
+                        console.log(wiki);
+                    })*/
+
+                    $.ajax({
+                        url: 'https://en.wikipedia.org/w/api.php',
+                        data: {
+                            action: 'categorytree',
+                            category: val1,
+                            //meta: 'userinfo',
+                            format: 'json',
+                            origin: '*'
+                        },
+                        xhrFields: {
+                            withCredentials: false
+                        },
+                        dataType: 'json',
+                    
+                        success: function(result1){
+                            console.log(result1)
+                            $('#message').html(JSON.stringify(result1.categorytree));
+                    }})
+                })              
+
             });
             
         </script>
@@ -40,12 +70,13 @@
             <h1><span class="fa fa-free-code-camp"></span>freeCodeCamp</h1>
             <form>
                 <div class="input-group" id="searchbox">
-                    <input type="text" class="form-control">
+                    <input id="searchBox" type="text" class="form-control">
                     <span class="input-group-btn">
-                        <button class="btn" type="button">Search</button>
+                        <button id="searchButton" class="btn" type="button">Search</button>
                     </span>
                 </div>
             </form>
+            <div id="message">Result goes here</div>
         </div>
     </body>
 </html>
