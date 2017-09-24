@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!--Jquery-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-        <script src="/Users/cliffordcrerar/Github/WEB1/jQuery/jquery-3.2.1.min.js" ></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <!--font awesome-->
@@ -19,48 +19,72 @@
                 background-color:firebrick;
             }
             form {
-                width: 50%;
+                width: 30%;
                 margin: 5% auto 0px auto;
             }
             form {
                 border-color: green;
                 border-width: 10px;
             }
+            #searchResults {
+                width: 40%;
+                margin: 1% auto 0px auto;
+            }
         </style>
         <script type="application/javascript">
             $(document).ready(function(){
-                console.log("jQuery ready")
+                console.log("jQuery ready");
 
-                $('#searchButton').click(function(){
-                    var val1 = $('#searchBox').val()
-                    console.log(val1)
-
-                    /*
-                    var url1 = 'https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json'
-                    $.getJSON(url1, function(wiki){
-                        console.log(wiki);
-                    })*/
+                //Searchfunction
+                function searchWiki() {
+                    var val1 = $('#searchBox').val();
+                    console.log(val1);
+                    $('#searchResults').empty();
 
                     $.ajax({
                         url: 'https://en.wikipedia.org/w/api.php',
                         data: {
-                            action: 'categorytree',
-                            category: val1,
-                            //meta: 'userinfo',
-                            format: 'json',
-                            origin: '*'
-                        },
-                        xhrFields: {
-                            withCredentials: false
+                            action: "query",
+                            format: "json",
+                            list: "search",
+                            srsearch: val1,
+                            srlimit: "5",
+                            srwhat: "text",
+                            srprop: "timestamp",
+                            origin: '*',
+                            utf8: 1,
+                            srprop: 'snippet'
                         },
                         dataType: 'json',
                     
                         success: function(result1){
-                            console.log(result1)
-                            $('#message').html(JSON.stringify(result1.categorytree));
-                    }})
-                })              
+                            //console.log(result1);
+                            //$('#searchResults').html(JSON.stringify(result1.query.search));
+                            $('#searchResults').hide();
+                            var searchResults = result1.query.search;
+                            var i = 1
+                            searchResults.forEach(function(arrayElement) {
+                                //console.log(arrayElement.title)
+                                //console.log(i)
+                                $('#searchResults').append('<div class="well" id="result'+i+'"></div>');
+                                $('#result'+i).append('<h2>'+arrayElement.title+'</h2>');
+                                $('#result'+i).append('<blockquote><p>'+arrayElement.snippet+'</p></blockquote>');
+                                i++
+                            });
+                            
+                            $('#searchResults').fadeToggle("slow")
+                            
+                            $('#searchResults').each(function(childElement){
+                                console.log(childElement)
+                            })
+                                
+                            //console.log(searchResults);                            
+                    }});
+                }
 
+                $('#searchButton').click(function(){searchWiki()});
+
+                
             });
             
         </script>
@@ -68,15 +92,15 @@
     <body>
         <div class="container-fluid">
             <h1><span class="fa fa-free-code-camp"></span>freeCodeCamp</h1>
-            <form>
-                <div class="input-group" id="searchbox">
-                    <input id="searchBox" type="text" class="form-control">
+            <form class="well">
+                <div class="input-group" id="searchBox1">
+                    <input id="searchBox" type="text" class="form-control" value="Albert Einstein">
                     <span class="input-group-btn">
                         <button id="searchButton" class="btn" type="button">Search</button>
                     </span>
                 </div>
             </form>
-            <div id="message">Result goes here</div>
+            <div id="searchResults">Result goes here</div>
         </div>
     </body>
 </html>
