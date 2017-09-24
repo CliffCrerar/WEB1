@@ -11,16 +11,23 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <!--font awesome-->
-	    <script src="https://use.fontawesome.com/117c6a36cf.js"></script>
+        <script src="https://use.fontawesome.com/117c6a36cf.js"></script>
+        
+        <!--google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
         
         <!--Custom JavaScript-->
         <style type="text/css">
             body {
-                background-color:firebrick;
+                background-color:darksalmon;
+                background-image: url("http://biteinto.info/wp-content/uploads/2016/02/hardwood-background-hd-and-40-stunning-wood-backgroundstrickvilla-trickvilla-0.jpg");
+                background-size: 100%;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
             }
             form {
                 width: 40%;
-                margin: 5% auto 0px auto;
+                margin: 1% auto 0px auto;
             }
             form {
                 border-color: green;
@@ -33,7 +40,7 @@
             #searchResults>.well:hover{
                 border-left-width: 5px;
                 border-left-style: solid;
-                border-left-color: rgba(1, 1, 1, 0.5)
+                border-left-color: rgba(1, 1, 1, 0.5);
             }
             .icon{
                 margin: 5px 5px 5px 5px;
@@ -43,20 +50,46 @@
             }
             #randomButtondiv{
                 width: 40%;
-                margin: 0% auto 0px auto;              
+                margin: 1% auto 0px auto;              
             }
-            
+            div>#resetButton{
+                display: inline;
+            }
+            #resetButton{
+                margin: 2% auto 2% auto;                
+                float:right;
+                font-size: 20px;                
+            }
+            #ffc{
+                font-family: pt mono;
+                color: white;
+            }
+            .imgdiv>h1 {                
+                font-size: 50px;
+                font-family: 'Times New Roman', Times, serif;
+                font-weight: bold;
+                color: white;               
+            }            
+            .imgdiv>h1>img {                
+                height: 50px;
+            }
+            .bg{
+                background-color: rgba(1, 1, 1, 0.5);
+            }
+            .nav{
+                background-color: rgba(1, 1, 1, 0.5);
+                display: inline;
+            }
+            .well{
+                box-shadow: -15px 10px 5px rgba(1, 1, 1, 0.5);
+            }
         </style>
         <script type="application/javascript">
             $(document).ready(function(){
-                console.log("jQuery ready");
-
-                //Searchfunction
+                //Wikipedia seach function  
                 function searchWiki() {
                     var val1 = $('#searchBox').val();
-                    console.log(val1);
                     $('#searchResults').empty();
-
                     $.ajax({
                         url: 'https://en.wikipedia.org/w/api.php',
                         data: {
@@ -74,52 +107,101 @@
                         dataType: 'json',
                     
                         success: function(result1){
-                            //console.log(result1);
-                            //$('#searchResults').html(JSON.stringify(result1.query.search));
                             $('#searchResults').hide();
                             var searchResults = result1.query.search;
                             var i = 1
                             var pageLink
                             searchResults.forEach(function(arrayElement) {
-                                //console.log(arrayElement.title)
-                                //console.log(i)
                                 pageLink = 'https://en.wikipedia.org/?curid='+arrayElement.pageid
                                 $('#searchResults').append('<div class="well" id="result'+i+'"></div>');
                                 $('#result'+i).append('<h2>'+arrayElement.title+'<a href="'+pageLink+'" target="_blank"><span class="icon fa fa-external-link"></span></a></h2>');
                                 $('#result'+i).append('<blockquote><p>'+arrayElement.snippet+'</p></blockquote>');
                                 i++
                             });
-                            
                             $('#searchResults').fadeToggle("slow")
-                               
-                            console.log(searchResults);                            
                     }});
                 }
 
-                $('#searchButton').click(function(){searchWiki()});
-                $('#searchbox').submit(searchWiki())
+                //Random wikipedia search function
+                function randomSearch(){
+                    $('#searchResults').empty();
+                    $.ajax({
+                        url: 'https://en.wikipedia.org/w/api.php',
+                        data: {
+                            action: "query",
+                            format: "json",
+                            list: "random",
+                            rnlimit: "5",
+                            srwhat: "text",
+                            origin: '*',
+                            utf8: 1,
+                            rnnamespace: "14",
+                        },
+                        dataType: 'json',
+                        success: function(result1){                   
+                            $('#searchResults').hide();
+                            var searchResults = result1.query.random;
+                            var i = 1
+                            var pageLink
+                            searchResults.forEach(function(arrayElement) {
+                                pageLink = 'https://en.wikipedia.org/?curid='+arrayElement.pageid
+                                $('#searchResults').append('<div class="well" id="result'+i+'"></div>');
+                                $('#result'+i).append('<h2>'+arrayElement.title.split(':')[1]+'<a href="'+pageLink+'" target="_blank"><span class="icon fa fa-external-link"></span></a></h2>');
+                                i++
+                            });
+                            $('#searchResults').fadeToggle("slow")
+                        }
+                    });
+                }
 
+                function resetPage() {
+                    window.location.reload();
+                }
+
+                //Assign function do control elements
+                $('#searchButton').click(function(){searchWiki(); $('#randomButtondiv').fadeOut("slow")});
+                $('#searchbox').submit(searchWiki());
+                $('.btn-danger').click(function(){resetPage()});
+                $('#randomButton').click(function(){randomSearch();$('form').fadeOut("slow")});
                 
             });
             
         </script>
     </head>
     <body>
-        <div class="container-fluid">
-            <h1><span class="fa fa-free-code-camp"></span>freeCodeCamp</h1>
+        <div class="container-fluid" >
+            <div class="bg row">
+                <div class="row nav">
+                    <div class="col-md-3">
+                        <h1 class="text-center" id="ffc"><span class="fa fa-free-code-camp"></span>freeCodeCamp</h1>
+                    </div>
+
+                    <div class="col-md-6 imgdiv">                    
+                        <h1 class="text-center">                        
+                            <img id="img1" class="img-fluid" src="https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png" alt="wikiLogo"></img>
+                            Wikipedia Viewer
+                        </h1>
+                    </div>                
+                    
+                    <div class="col-md-3">
+                        <button id="resetButton" class="btn btn-danger">Reset</button>
+                    </div>
+                </div>
+        </div>
+            
             <form class="well"> 
                 <div class="input-group" id="searchBox1">
-                    <input id="searchBox" type="text" class="form-control" value="Albert Einstein">
+                    <input id="searchBox" type="text" class="form-control" value="" title="Please type your text to search here and press enter or click the search button">
                     <span class="input-group-btn">
-                        <button id="searchButton" class="btn" type="button">Search</button>                        
+                        <button id="searchButton" class="btn btn-default" type="button">Search</button>                        
                     </span>
                 </div>
             </form>
-            <div class="well" id="randomButtondiv"> 
-                
-                    <button id="randomButton" class="btn" type="button">Search</button>                        
 
-            </div>    
+            <div class="well" id="randomButtondiv">                
+                <button id="randomButton" class="btn btn-info btn-block" type="button">Random Search</button>                        
+            </div> 
+
             <div id="searchResults">Result goes here</div>
         </div>
     </body>
