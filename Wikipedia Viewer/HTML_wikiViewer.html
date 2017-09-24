@@ -83,6 +83,9 @@
             .well{
                 box-shadow: -15px 10px 5px rgba(1, 1, 1, 0.5);
             }
+            #randomButtondiv>a{
+                text-decoration: none;
+            }
         </style>
         <script type="application/javascript">
             $(document).ready(function(){
@@ -143,15 +146,7 @@
                             var searchResults = result1.query.random;
                             var i = 1
                             var pageLink
-                            searchResults.forEach(function(arrayElement) {
-                                pageLink = 'https://en.wikipedia.org/?curid='+arrayElement.pageid
-                                $('#searchResults').append('<div class="well" id="result'+i+'"></div>');
-                                $('#result'+i).append('<h2>'+arrayElement.title.split(':')[1]+'<a href="'+pageLink+'" target="_blank"><span class="icon fa fa-external-link"></span></a></h2>');
-                                i++
-                            });
-                            $('#searchResults').fadeToggle("slow")
-                        }
-                    });
+
                 }
 
                 function resetPage() {
@@ -160,9 +155,16 @@
 
                 //Assign function do control elements
                 $('#searchButton').click(function(){searchWiki(); $('#randomButtondiv').fadeOut("slow")});
-                $('#searchbox').submit(searchWiki());
+                //$('#searchbox').submit(searchWiki());
+                $(document).keypress(function(pressed){
+                    if(pressed.key == 'Enter'){
+                        pressed.preventDefault();
+                        searchWiki();
+                        $('#randomButtondiv').fadeOut('slow');
+                    }
+                })
                 $('.btn-danger').click(function(){resetPage()});
-                $('#randomButton').click(function(){randomSearch();$('form').fadeOut("slow")});
+                $('#randomButton').click(function(){randomSearch();});
                 
             });
             
@@ -199,10 +201,12 @@
             </form>
 
             <div class="well" id="randomButtondiv">                
-                <button id="randomButton" class="btn btn-info btn-block" type="button">Random Search</button>                        
+                <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
+                    <button id="randomButton" class="btn btn-info btn-block" type="button">Random Page</button>
+                </a>                  
             </div> 
 
-            <div id="searchResults">Result goes here</div>
+            <div id="searchResults"></div>
         </div>
     </body>
 </html>
