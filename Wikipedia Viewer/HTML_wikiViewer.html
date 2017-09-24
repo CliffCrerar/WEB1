@@ -19,7 +19,7 @@
                 background-color:firebrick;
             }
             form {
-                width: 30%;
+                width: 40%;
                 margin: 5% auto 0px auto;
             }
             form {
@@ -30,6 +30,22 @@
                 width: 40%;
                 margin: 1% auto 0px auto;
             }
+            #searchResults>.well:hover{
+                border-left-width: 5px;
+                border-left-style: solid;
+                border-left-color: rgba(1, 1, 1, 0.5)
+            }
+            .icon{
+                margin: 5px 5px 5px 5px;
+            }
+            h2{
+                margin: 10px 0px 10px 0px;
+            }
+            #randomButtondiv{
+                width: 40%;
+                margin: 0% auto 0px auto;              
+            }
+            
         </style>
         <script type="application/javascript">
             $(document).ready(function(){
@@ -63,26 +79,25 @@
                             $('#searchResults').hide();
                             var searchResults = result1.query.search;
                             var i = 1
+                            var pageLink
                             searchResults.forEach(function(arrayElement) {
                                 //console.log(arrayElement.title)
                                 //console.log(i)
+                                pageLink = 'https://en.wikipedia.org/?curid='+arrayElement.pageid
                                 $('#searchResults').append('<div class="well" id="result'+i+'"></div>');
-                                $('#result'+i).append('<h2>'+arrayElement.title+'</h2>');
+                                $('#result'+i).append('<h2>'+arrayElement.title+'<a href="'+pageLink+'" target="_blank"><span class="icon fa fa-external-link"></span></a></h2>');
                                 $('#result'+i).append('<blockquote><p>'+arrayElement.snippet+'</p></blockquote>');
                                 i++
                             });
                             
                             $('#searchResults').fadeToggle("slow")
-                            
-                            $('#searchResults').each(function(childElement){
-                                console.log(childElement)
-                            })
-                                
-                            //console.log(searchResults);                            
+                               
+                            console.log(searchResults);                            
                     }});
                 }
 
                 $('#searchButton').click(function(){searchWiki()});
+                $('#searchbox').submit(searchWiki())
 
                 
             });
@@ -92,14 +107,19 @@
     <body>
         <div class="container-fluid">
             <h1><span class="fa fa-free-code-camp"></span>freeCodeCamp</h1>
-            <form class="well">
+            <form class="well"> 
                 <div class="input-group" id="searchBox1">
                     <input id="searchBox" type="text" class="form-control" value="Albert Einstein">
                     <span class="input-group-btn">
-                        <button id="searchButton" class="btn" type="button">Search</button>
+                        <button id="searchButton" class="btn" type="button">Search</button>                        
                     </span>
                 </div>
             </form>
+            <div class="well" id="randomButtondiv"> 
+                
+                    <button id="randomButton" class="btn" type="button">Search</button>                        
+
+            </div>    
             <div id="searchResults">Result goes here</div>
         </div>
     </body>
