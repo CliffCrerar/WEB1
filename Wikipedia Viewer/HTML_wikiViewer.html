@@ -111,6 +111,7 @@
                     
                         success: function(result1){
                             $('#searchResults').hide();
+                            
                             var searchResults = result1.query.search;
                             var i = 1
                             var pageLink
@@ -127,25 +128,6 @@
 
                 //Random wikipedia search function
                 function randomSearch(){
-                    $('#searchResults').empty();
-                    $.ajax({
-                        url: 'https://en.wikipedia.org/w/api.php',
-                        data: {
-                            action: "query",
-                            format: "json",
-                            list: "random",
-                            rnlimit: "5",
-                            srwhat: "text",
-                            origin: '*',
-                            utf8: 1,
-                            rnnamespace: "14",
-                        },
-                        dataType: 'json',
-                        success: function(result1){                   
-                            $('#searchResults').hide();
-                            var searchResults = result1.query.random;
-                            var i = 1
-                            var pageLink
 
                 }
 
@@ -164,8 +146,7 @@
                     }
                 })
                 $('.btn-danger').click(function(){resetPage()});
-                $('#randomButton').click(function(){randomSearch();});
-                
+                $('#randomButton').click(function(){randomSearch();});                
             });
             
         </script>
@@ -189,6 +170,7 @@
                         <button id="resetButton" class="btn btn-danger">Reset</button>
                     </div>
                 </div>
+            </div>
         </div>
             
             <form class="well"> 
