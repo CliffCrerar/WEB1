@@ -5,9 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- jQuery and Bootstrap CSS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <!--font awesome-->
     <script src="https://use.fontawesome.com/117c6a36cf.js"></script>
     <!--google fonts-->
@@ -19,36 +21,51 @@
     <!--body style-->
     <style>
         body{
-            background-color: #ffa49a
+            background-color: #A09FFF
         };
     </style>
 
     <!--Title Div style-->
     <style>
         .titleDiv{
-            border: 2px solid black;
+            background-color: rgb(0, 89, 190);
+            border-bottom: 5px;
+            border-bottom-style: solid;
         }
     </style>
     <!--Title Div-->
     <div class="titleDiv container-fluid">
         <div class="row">
             <style>
-                .row{
-                    background-color: rgb(0, 89, 190);
-                    padding: 1%
-                }
                 h1{
                     color:white;
-                    
+                    font-size: 30px;
+                    display:inline;
+                    vertical-align: middle;
+                    margin:0%
                 }
+                #titleLeft>img{
+                    display: inline !important;
+                }
+                #titleLeft{
+                    padding: 2%;
+                }
+                #titleRight{
+                    padding: 2%;
+                    vertical-align: middle;
+                }
+
             </style>
-            <div class="col-md-6">
-                <h1>Twitch JSON API Demo</h1>
+            <div class="col-md-6" id="titleLeft">
+                <img class="img-responsive" 
+                    src="https://rawgit.com/CliffCrerar/WEB1/master/TwitchTv%20/twitchLogo.png">
+                <h1>.tv JSON API</h1>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" id="titleRight">
                 <style>
                     .right{
                         float: right;
+                        vertical-align: middle;
                     }
                 </style>
                 <h1 class="right" style="font-family: PT Mono;">
@@ -57,8 +74,51 @@
                 </h1>    
             </div>
         </div>
+    </div>
 
-            
+    <!--ChannelDiv Style-->
+    <style>
+        #channelDiv{
+            max-width: 400px; 
+            margin: 1% auto auto auto;
+            border: 1px solid #ccc;
+        };
+    </style>
+    <!--ChannelDiv-->
+    <div id="channelDiv" class="">
+        <p>some text</p>
+        <!--Tab button style-->
+        <style>
+            #tanbtn{
+                overflow: hidden;          
+            }
+            #tabBtn button{
+                background-color: inherit;
+                float: left;
+                width: 33.33%;
+                border: none;
+                outline: none;
+                padding: 14px 16px;
+                transition: 0.3;
+                font-size: 17px
+            }
+            #tabBtn button:hover{
+                background-color: #ddd;
+            }
+            #tabBtn button.active{
+                background-color: #ccc;
+            }
+        </style>
+        <!--Tab buttons-->
+        <div id="tabBtn">
+            <button class="active">All</button>
+            <button>Online</button>
+            <button>Offline</button>
+        </div>
+        <div id="channels">
+
+        </div>
+        <p>some text</p>
     </div>
     
     <script>
@@ -67,20 +127,40 @@
 
             //Declare program variables
             var twitchUrl = 'https://gist.githubusercontent.com/QuincyLarson/2ff6892f948d0b7118a99264fd9c1ce8/raw/cd03e43491e93479ca0780d79534b61330c0f5ee/Twitch%20sample%20API%20responses%20in%20array%20form'
-            var twitchObj
-            var objLoaded
-
-
-            $.getJSON(twitchUrl, function(data){
-                console.log(data);
-                twitchObj = data;
-                objLoaded = true;
-            })
             
+            $.getJSON(twitchUrl, function(data){
+                var twitchObj = data;
+                var twitchObjLen = twitchObj.length
+
+                console.log(twitchObj);
+
+                //loop to add channels
+                for(i=0;i<twitchObjLen;i++){
+                    console.log(i);
+                    //create new object variables
+                    var $newChannelDiv = $("<div>", {'id':'channel'+i})
+                    //var $channelLogo = $('<img>', {'src':twitchObj[i].stream.logo})
+
+                    console.log(twitchObj[i].stream)
+                    
+                    //jquery to insert element variables
+                    $('#channels').append($newChannelDiv);
+                    //$('#channel'+i).append($channelLogo)
+                }
+
+            })
 
 
-
-
+            //function to change active tabs on click
+            $('#tabBtn').bind('click',function(object){
+                var buttons = $('#tabBtn').children();
+                buttons.each(function(i){
+                    if(buttons[i].className = 'active'){
+                        buttons[i].removeAttribute('class');
+                    }
+                })
+                $('button:contains("'+object.target.innerHTML+'")').addClass("active");
+            });
         });
     </script>
   </body>
