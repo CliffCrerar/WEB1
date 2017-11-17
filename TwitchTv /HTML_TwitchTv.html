@@ -125,9 +125,24 @@
         $(document).ready(function(){
             console.log('jQuery Ready');
 
+            var twitchAPIClientID = 'prmrjgu8gzyem5un81z1twgualarav'
+
             //Declare program variables
-            var twitchUrl = 'https://gist.githubusercontent.com/QuincyLarson/2ff6892f948d0b7118a99264fd9c1ce8/raw/cd03e43491e93479ca0780d79534b61330c0f5ee/Twitch%20sample%20API%20responses%20in%20array%20form'
+            var twitchUrl = 'https://wind-bow.gomix.me/twitch-api'
+
+            $.ajax({
+                URL: twitchUrl,
+                data: {
+                    format: 'JSON',
+                    Origin: '*',
+
+                },
+                success: function(data){
+                    console.log(data);
+                }
+            })
             
+
             $.getJSON(twitchUrl, function(data){
                 var twitchObj = data;
                 var twitchObjLen = twitchObj.length
@@ -136,12 +151,12 @@
 
                 //loop to add channels
                 for(i=0;i<twitchObjLen;i++){
-                    console.log(i);
+                    //console.log(i);
                     //create new object variables
                     var $newChannelDiv = $("<div>", {'id':'channel'+i})
                     //var $channelLogo = $('<img>', {'src':twitchObj[i].stream.logo})
 
-                    console.log(twitchObj[i].stream)
+                    //console.log(twitchObj[i].stream)
                     
                     //jquery to insert element variables
                     $('#channels').append($newChannelDiv);

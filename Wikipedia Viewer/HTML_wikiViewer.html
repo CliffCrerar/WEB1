@@ -132,7 +132,9 @@
                 }
 
                 function resetPage() {
-                    window.location.reload();
+                    $('#searchResults').fadeOut('slow');
+                    $('#randomButtondiv').fadeIn('slow');
+                    $('#searchBox').val('');
                 }
 
                 //Assign function do control elements
