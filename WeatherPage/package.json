@@ -1,0 +1,17 @@
+{
+  "name": "ffcweatherpage",
+  "version": "1.0.0",
+  "description": "freeCodeCamp weather page reboot",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "author": "Cliff Crerar",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.1.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.5"
+  }
+}
