@@ -14,32 +14,15 @@ module.exports = {
             { test: /\.(png|svg|jpg|gif)$/, use: ['file-loader'] }, // filer loader
             { test: /\.(woff|woff2|eot|ttf|otf)$/, use: ['file-loader'] }, //font loader
             {
-                test: /\.scss$/,
-                use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
-                }, {
-                    loader: "css-loader", // translates CSS into CommonJS
-                    options: {
-                        sourceMap: true
-                    }
-                }, ]
-            },
-            {
-                test: /\.html$/,
-                use: [{
+                test: /\.(html)$/,
+                use: {
                     loader: 'html-loader',
                     options: {
-                        minimize: true,
-                        removeComments: true,
-                        collapseWhitespace: true
+                        attrs: [':data-src']
                     }
-                }],
-            },
-            { test: /\.txt$/, use: 'raw-loader' },
-            {
-                test: /\.(png|jpg)$/,
-                loader: 'url-loader'
-            },
+                }
+            }
+
         ]
     },
     plugins: [
