@@ -1,0 +1,8 @@
+{
+    "jshint.options": {
+        "esversion": 6
+    },
+    "liveServer.settings.donotVerifyTags": false,
+    "liveServer.settings.CustomBrowser": "firefox",
+    "liveServer.settings.root": "/dist"
+}
