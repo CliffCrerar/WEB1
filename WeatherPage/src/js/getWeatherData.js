@@ -1,5 +1,5 @@
 //wGet darksky object and set weather variables
-function getWeatherData(apiLink) {
+module.exports = function(apiLink) {
     $.getJSON(apiLink, function(forecast) {
         //console.log(forecast);
 
