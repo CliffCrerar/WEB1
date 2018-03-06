@@ -3,14 +3,16 @@ import _ from 'lodash';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 
-
 // BOOTSTRAP TOGGLER
 import '../bootstrap-toggle/css/bootstrap-toggle.css';
 import '../bootstrap-toggle/js/bootstrap-toggle';
 
+// FONT AWESOME
+import ''
+
 // SKYCONS
 import skycons from 'skycons';
-console.log(skycons());
+//console.log(skycons());
 
 // CSS
 import './index.css';
@@ -29,11 +31,11 @@ import imageURLFog from './image/foghdwp.jpg';
 import imageURLCloudyDay from './image/wp.jpg';
 import imageURLCloudyNight from './image/nshrs.jpg';
 import dsImg from './image/dsimg.png';
-$('body').append(pagebody);
-$('#dsImg').attr('src', dsImg);
-$("#toggle").attr("disabled", true); //disable toggle
-$("#weather").hide(); //hide weather info until API is loaded
-require('./js/toggler');
+//$('body').append(pagebody);
+//$('#dsImg').attr('src', dsImg);
+//$("#toggle").attr("disabled", true); //disable toggle
+//$("#weather").hide(); //hide weather info until API is loaded
+//require('./js/toggler');
 
 
 //GET POS
