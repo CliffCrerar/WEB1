@@ -3,7 +3,7 @@ module.exports = function(apiLink) {
 
     $.getJSON(apiLink, function(forecast) {
         localStorage.icon = forecast.currently.icon;
-        console.log(forecast);
+        //console.log(forecast);
 
         //Set all weather variables default values
         window.nowSum = forecast.currently.summary;
@@ -42,8 +42,12 @@ module.exports = function(apiLink) {
         $("#weather").show(); //show weather div
 
         const determineIcon = require('./determineIcon');
-        console.log(nowIcon);
-        determineIcon(nowIcon);
+        //console.log(nowIcon);
+        Promise.resolve(determineIcon(nowIcon))
+            .then(function() {
+                require('../wi/TweenMax');
+                require('../wi/script.js');
+            });
 
     });
 }

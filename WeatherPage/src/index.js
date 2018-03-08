@@ -13,7 +13,7 @@ import 'font-awesome-sass-loader';
 // WEATHER ICONS
 import './wi/TweenMax';
 import './wi/main.css';
-import './wi/script';
+
 
 // CSS
 import './index.css';
@@ -51,7 +51,7 @@ if (navigator.geolocation) {
         pos = position;
         Promise.resolve(pos)
             .then(function(val) {
-                console.log(val);
+                //console.log(val);
                 apiLink = getLink(val);
             }).then(function() {
                 Promise.resolve(displayForecast(apiLink))

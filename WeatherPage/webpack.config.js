@@ -3,11 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const $ = require('jquery');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
     entry: './src/index.js',
-    devtool: 'inline-source-map',
+    //devtool: 'inline-source-map',
     module: {
         rules: [
             { test: /\.css$/, use: ['style-loader', 'css-loader'] }, //css loader
@@ -40,13 +41,16 @@ module.exports = {
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             title: "FCC Weather",
-
+            favicon: './655415.png'
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
             Popper: ['popper.js', 'default'],
         }),
+        new UglifyJSPlugin({
+            sourceMap: true
+        })
     ],
     output: {
         filename: 'bundle.js',
