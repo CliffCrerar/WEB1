@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "TwitchTvClient"
+		},
+		{
+			"path": "TwitchTvServer"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true,
+		"jshint.enable": true,
+		"jshint.packageManager": "npm",
+		"prettier.eslintIntegration": true
+	}
+}
