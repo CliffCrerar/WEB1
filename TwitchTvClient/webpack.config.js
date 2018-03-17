@@ -1,9 +1,33 @@
 const path = require('path');
+const webpack = require('webpack');
+const HTMLWebpackPugin = require('html-webpack-plugin');
+const $ = require('jquery');
+
 
 module.exports = {
     entry: "./index.js",
     output: {
         filename: "[name].bundle.js",
-        path: path.resolve(__dirname, dist)
-    }
+        path: path.resolve(__dirname, 'dist')
+    },
+    module: {
+        rules: [{
+            test: /\.(png|svg|jpg|gif)$/,
+            use: [
+                'file-loader'
+            ]
+        }]
+    },
+    plugins: [
+        new HTMLWebpackPugin({
+            title: 'FFC Twitch',
+
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            Popper: ['popper.js', 'default'],
+        }),
+
+    ]
 };

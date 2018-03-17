@@ -4,17 +4,22 @@
     "description": "Project for freecode camp to demo twitch api usage",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "webpack --config webpack.config.js --show-modules --mode development",
+        "start": "webpack --watch --mode development"
     },
     "author": "Cliff Crerar",
     "license": "ISC",
     "dependencies": {
         "bootstrap": "^4.0.0",
-        "jquery": "^1.9.1",
+        "jquery": "^3.3.1",
         "node": "^9.8.0",
-        "popper.js": "^1.14.1"
+        "popper.js": "^1.14.1",
+        "pug": "^2.0.1"
     },
     "devDependencies": {
+        "file-loader": "^1.1.11",
+        "html-webpack-plugin": "^3.0.6",
         "jshint": "^2.9.5",
         "webpack": "^4.1.1",
         "webpack-cli": "^2.0.12"
