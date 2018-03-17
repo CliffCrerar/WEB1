@@ -1,0 +1,30 @@
+{
+    "name": "ffctwitchtvapi",
+    "version": "1.0.0",
+    "description": "Project for freecode camp to demo twitch api usage",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Cliff Crerar",
+    "license": "ISC",
+    "dependencies": {
+        "bootstrap": "^4.0.0",
+        "jquery": "^1.9.1",
+        "node": "^9.8.0",
+        "popper.js": "^1.14.1"
+    },
+    "devDependencies": {
+        "jshint": "^2.9.5",
+        "webpack": "^4.1.1",
+        "webpack-cli": "^2.0.12"
+    },
+    "eslintConfig": {
+        "env": {
+            "es6": true
+        }
+    },
+    "jshintConfig": {
+        "esversion": 6
+    }
+}
