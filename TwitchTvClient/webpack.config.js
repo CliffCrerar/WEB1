@@ -5,29 +5,32 @@ const $ = require('jquery');
 
 
 module.exports = {
-    entry: "./index.js",
+    entry: "./src/index.js",
     output: {
         filename: "[name].bundle.js",
         path: path.resolve(__dirname, 'dist')
     },
     module: {
-        rules: [{
-            test: /\.(png|svg|jpg|gif)$/,
-            use: [
-                'file-loader'
-            ]
-        }]
+        rules: [
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            }
+        ]
     },
     plugins: [
         new HTMLWebpackPugin({
             title: 'FFC Twitch',
 
         }),
-        new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            Popper: ['popper.js', 'default'],
-        }),
-
     ]
 };
