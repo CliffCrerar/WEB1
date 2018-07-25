@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FFC Tribute page</title>
+    <style>
+        body, ul{
+            margin: 0;
+        }
+        body{
+            background: url('./tribute-bg.jpeg') top center / 100vw 100vh fixed;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            color: white;
+            --brad: 10px
+        }
+        main{
+            max-width: 70vw;
+            margin: 5vh auto 0 auto;
+        }
+        header{
+            display: flex;
+            align-items: center;
+            min-height: 20vh;
+        }
+        article{
+            display: grid;
+            grid-template-columns: 40% auto;
+            grid-template-rows: 55vh;
+            grid-template-areas: 
+                "image info"
+        }
+        section:first-child{
+            grid-area: image;
+        }
+        section:last-child{
+            grid-area: info
+        }
+        footer{
+            display: flex;
+            align-items: center;
+            min-height: 20vh;
+        }
+
+        .title{
+            background: #265859;
+            width: 100%;
+            text-align: center;
+            padding: 3vh;
+            border-radius: var(--brad);
+        }
+
+        .img-section{
+            height: auto;
+            padding: 0 10px 0 0;
+        }
+
+        .img-div{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5%;
+            align-items: center;
+            height: 90%;
+            background: rgba(0, 0, 0, 0.7);   
+            border-radius: var(--brad);
+        }
+
+        .image{
+            width: auto;
+            height: 65%;;
+            border-radius: var(--brad);
+            margin: 10px;
+        }
+
+        .img-caption{
+            text-align: center;
+        }
+
+        .tribute-info-section{
+            padding: 0 0 0 10px;
+        }
+
+        .tribute-info{
+            background: rgba(0, 0, 0, 0.7);   
+            border-radius: var(--brad);
+            padding: 5%;
+            height: 85%;
+            overflow-y: scroll;
+        }
+
+        .footer-div{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background: #f5d160;
+            border-radius: var(--brad);
+        }
+        .footer-div>a{
+            padding: 3vh;
+        }
+
+        @media (max-width:414px){
+            body{
+                background: url('./tribute-bg.jpeg') top center / auto 100vh fixed;
+                overflow: show;
+            }
+            article{
+                grid-template-columns: auto;
+                grid-template-rows: auto;
+                grid-template-areas: 
+                    "image"
+                    "info"
+            }
+            body{
+                font-size: 0.7em;
+            }
+            .tribute-info-section,.img-section{
+                padding: 0;
+            }
+            .tribute-info{
+                margin-top:20px;
+                height: auto;
+                overflow-y: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main id="main">
+        <header>
+            <h1 class="title" id="title">Tribute page</h1>
+        </header>
+
+
+        <article>
+            <section class="img-section">
+                <div class="img-div" id="img-div">
+                    <img src="./jdvpic.jpg" id="image" class="image">
+                    <div id="img-caption" class="img-caption">
+                        <h3>Joost van der Westhuizen</h3>
+                        <p>Remembered for his inspirational spirit and dignity</p>
+                    </div>
+                </div>
+
+            </section>
+            <section class="tribute-info-section">
+                <div class="tribute-info" id="tribute-info">
+                    <ul>
+                        <li>Born 20 February 1971 in Pretoria.</li>
+                        <li>Schooled at Hoërskool F.H. Odendaal.</li>
+                        <li>Attended the University of Pretoria (Tuks).</li>
+                        <li>Debuted for the Northern Transvaal rugby union (Blue Bulls) in 1992 and 
+                            continued to play for this provincial team until his retirement.</li>
+                        <li>Represented South-Africa in sevens rugby in 1993.</li>
+                        <li>Played an instrumental role in the legendary world cup final win over New 
+                            Zealand in 1995.</li>
+                        <li>Captained the South-African rugby team in the 1999 world cup.</li>
+                        <li>Played his 3<sup>rd</sup> and final world cup in 2003.</li>
+                        <li>Retired from international test rugby in 2003.</li>
+                        <li>In 2011 the legend of the game was diagnosed with incurable moto neurone disease.
+                            </li>
+                        <li>Was inducted in the World Rugby Hall of fame in 2015.</li>
+                        <li>Died on the 6<sup>th</sup> of February 2017 at the age of 45.</li>
+                    </ul>
+                    <h2>
+                        Achievements:
+                    </h2>
+                    <ul>
+                        <li>Scored 89 tries, and 190 points while playing for South-Africa.</li>
+                        <li>Made 111 rugby appereances for the South-African rugby team.</li>
+                        <li>The greatest scrum-half to have appeared at a Rugby World Cup.</li>
+                        <li>Famous for the tackle he made on the late All Blacks wing Jonah Lomu in the 1995 world cup final which will go down as the most important tackle in South 
+                            African rugby history as Lomu had been unstoppable.</li>
+                        <li>Redefining scrum-half play with his pace and power and superb technical skills.</li>
+                    </ul>
+                </div>
+            </section>
+        </article>
+        
+
+        <footer>
+            <div class="footer-div">
+                <a href="#" id="tribute-link" target="_blank">Read more</a>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>

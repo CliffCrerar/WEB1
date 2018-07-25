@@ -1,0 +1,9 @@
+{
+    "editor.formatOnSave": true,
+    "html.format.enable": true,
+    "editor.autoIndent": true,
+    "editor.renderIndentGuides": true,
+    "editor.tabSize": 4,
+    "html.format.indentInnerHtml": true,
+    "prettier.useTabs": true
+}
